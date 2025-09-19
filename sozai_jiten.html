@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>素材辞典｜Fil Bridge</title>
+  <meta name="description" content="Fil Bridgeの素材辞典。綿・麻・ポリエステル・ナイロン・ウール・シルク・西陣織・藍染など16種類の素材を写真と説明で一覧化。カードをクリックすると詳細を表示します。">
+
+  <style>
+    :root{
+      --teal:#00A2A8;        /* Fil Bridge ティール */
+      --ink:#43403F;         /* 文字色 */
+      --bg:#EEF2F5;          /* 背景の薄いブルーグレー */
+      --card:#fff;
+      --muted:#6b7280;
+      --radius:16px;
+      --shadow:0 10px 30px rgba(0,0,0,.06);
+      --maxw:1100px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Noto Sans JP","Segoe UI",Roboto,"Helvetica Neue",Arial,"メイリオ",sans-serif;
+      color:var(--ink);
+      background:radial-gradient(1200px 600px at 10% -10%, #F7F9FB, transparent), var(--bg);
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    }
+    a{color:inherit; text-decoration:none}
+
+    header{padding:28px 16px 8px}
+    .wrap{max-width:var(--maxw); margin:0 auto; padding:0 16px}
+    .title{
+      display:flex; align-items:flex-end; gap:10px; flex-wrap:wrap;
+    }
+    .title h1{font-size:clamp(24px,4vw,36px); margin:0}
+    .title small{color:var(--muted)}
+    .lead{color:#475569; margin:10px 0 22px}
+
+    /* Grid */
+    .grid{display:grid; gap:14px; grid-template-columns:1fr}
+    @media (min-width:700px){
+      .grid{grid-template-columns:1fr 1fr}
+    }
+
+    /* Card */
+    .card{
+      display:flex; gap:14px; align-items:stretch;
+      background:var(--card); border:1px solid #e5e7eb; border-radius:var(--radius);
+      box-shadow:var(--shadow); overflow:hidden;
+      transition:transform .12s ease, box-shadow .12s ease;
+      cursor:pointer;
+    }
+    .card:hover{transform:translateY(-1px); box-shadow:0 14px 34px rgba(0,0,0,.08)}
+    .card__img{flex:0 0 38%}
+    .card__img img{width:100%; height:100%; object-fit:cover; display:block}
+    .card__body{flex:1; padding:14px 16px 16px; display:flex; flex-direction:column; gap:8px}
+    .card__title{font-size:18px; font-weight:700; margin:0}
+    .card__desc{color:#475569; font-size:14px; margin:0}
+    .card__tag{margin-top:auto; display:inline-flex; gap:8px; align-items:center; font-size:12px; color:#0f766e}
+    .dot{width:8px; height:8px; border-radius:50%; background:var(--teal)}
+    .more{margin-left:auto; color:var(--teal); font-weight:600; font-size:13px}
+
+    /* Modal */
+    .modal{
+      position:fixed; inset:0; display:none; place-items:center; padding:24px;
+      background:rgba(0,0,0,.45); z-index:50;
+    }
+    .modal[open]{display:grid}
+    .modal__panel{
+      width:min(920px, 100%); background:#fff; border-radius:18px; overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,.25)
+    }
+    .modal__head{display:flex; justify-content:space-between; align-items:center; padding:14px 18px; border-bottom:1px solid #eef2f5}
+    .modal__title{font-size:18px; font-weight:700; margin:0}
+    .modal__close{
+      appearance:none; border:0; background:#f8fafc; color:#0f172a; border-radius:999px; padding:8px 12px; cursor:pointer;
+    }
+    .modal__body{display:grid; grid-template-columns:1fr 1fr; gap:0}
+    .modal__img{min-height:260px; background:#f8fafc}
+    .modal__img img{width:100%; height:100%; object-fit:cover; display:block}
+    .modal__content{padding:18px; font-size:15px; color:#374151}
+    .modal__content p{margin:0 0 12px}
+    .modal__meta{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px}
+    .pill{font-size:12px; padding:6px 10px; border-radius:999px; border:1px solid #e5e7eb; background:#fff}
+
+    @media (max-width:800px){
+      .modal__body{grid-template-columns:1fr}
+    }
+
+    /* Footer */
+    footer{color:#94a3b8; text-align:center; padding:24px 16px 40px}
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <div class="title">
+      <h1>素材辞典</h1>
+      <small>— クリックで詳細を表示</small>
+    </div>
+    <p class="lead">素材の写真（ダミー）＋名称＋短い説明をカードで一覧。カードをクリックすると、大きな写真と詳細コメントを確認できます。</p>
+  </header>
+
+  <main class="wrap">
+    <section class="grid" aria-label="素材一覧">
+      <!-- 1. 綿 -->
+      <article class="card" tabindex="0"
+        data-title="綿（コットン）"
+        data-detail="吸水性と肌ざわりに優れ、日常使いに最適な定番素材。洗濯耐久にも強く、ノベルティでも“長く使われる”価値を生みやすい。"
+        data-tags="天然繊維, 吸水性, デイリー向け">
+        <div class="card__img"><img src="https://picsum.photos/seed/fabric/600/400" alt="綿の生地サンプル（ダミー）"></div>
+        <div class="card__body">
+          <h3 class="card__title">綿（コットン）</h3>
+          <p class="card__desc">吸水性・肌ざわりがよく、扱いやすい定番素材。</p>
+          <div class="card__tag"><span class="dot" aria-hidden="true"></span><span>天然繊維</span><span class="more">詳細</span></div>
+        </div>
+      </article>
+
+      <!-- 2. 麻 -->
+      <article class="card" tabindex="0"
+        data-title="麻（リネン・ラミーなど）"
+        data-detail="清涼感と通気性に優れ、強度も高い。独特のシワ感が風合いとなり、夏向けやナチュラル志向のブランドに最適。"
+        data-tags="天然繊維, 通気性, 夏向け">
+        <div class="card__img"><img src="https://picsum.photos/seed/fabric/600/400" alt="麻の生地サンプル（ダミー）"></div>
+        <div class="card__body">
+          <h3 class="card__title">麻（リネン・ラミーなど）</h3>
+          <p class="card__desc">通気性と清涼感。強度が高くナチュラルな風合い。</p>
+          <div class="card__tag"><span class="dot"></span><span>通気性</span><span class="more">詳細</span></div>
+        </div>
+      </article>
+
+      <!-- 3. ポリエステル -->
+      <article class="card" tabindex="0"
+        data-title="ポリエステル"
+        data-detail="速乾・耐シワ・耐久性に優れ、量産時の寸法安定性も高い。再生ポリエステルの選択でCSR文脈も作りやすい。"
+        data-tags="合成繊維, 速乾, 耐シワ">
+        <div class="card__img"><img src="https://picsum.photos/seed/fabric/600/400" alt="ポリエステルの生地サンプル（ダミー）"></div>
+        <div class="card__body">
+          <h3 class="card__title">ポリエステル</h3>
+          <p class="card__desc">速乾・耐シワ・耐久性。再生材の活用も可能。</p>
+          <div class="card__tag"><span class="dot"></span><span>速乾</span><span class="more">詳細</span></div>
+        </div>
+      </article>
+
+      <!-- 4. ナイロン -->
+      <article class="card" tabindex="0"
+        data-title="ナイロン"
+        data-detail="軽量で高強度、耐摩耗性に優れる。ほのかな光沢があり、バッグやアウター、雑貨系ノベルティに好相性。"
+        data-tags="合成繊維, 軽量, 高強度">
+        <div class="card__img"><img src="https://picsum.photos/seed/fabric/600/400" alt="ナイロンの生地サンプル（ダミー）"></div>
+        <div class="card__body">
+          <h3 class="card__title">ナイロン</h3>
+          <p class="card__desc">軽量・高強度・耐摩耗。光沢感で上質さを演出。</p>
+          <div class="card__tag"><span class="dot"></span><span>軽量</span><span class="more">詳細</span></div>
+        </div>
+      </article>
+
+      <!-- 5. キュプラ -->
+      <article class="card" tabindex="0"
+        data-title="キュプラ"
+        data-detail="再生セルロース系。なめらかな肌ざわりと吸放湿性、上品なドレープ。裏地やスカーフなど肌当たりを重視する用途に。"
+        data-tags="再生繊維, 吸放湿, ドレープ">
+        <div class="card__img"><img src="https://picsum.photos/seed/fabric/600/400" alt="キュプラの生地サンプル（ダミー）"></div>
+        <div class="card__body">
+          <h3 class="card__title">キュプラ</h3>
+          <p class="card__desc">滑らか・吸放湿。上品な落ち感で高級感を演出。</p>
+          <div class="card__tag"><span class="dot"></span><span>吸放湿</span><span class="more">詳細</span></div>
+        </div>
+      </article>
+
+      <!-- 6. 毛（ウール） -->
+      <article class="card" tabindex="0"
+        data-title="毛（ウールなど）"
+        data-detail="保温性と弾力に優れ、防シワ性も高い。繊維が縮れて空気を含むため暖かい。冬向けや高級ラインに。"
+        data-tags="天然繊維, 保温, 弾力">
+        <div class="card__img"><img src="https://picsum.photos/seed/fabric/600/400" alt="ウールの生地サンプル（ダミー）"></div>
+        <div class="card__body">
+          <h3 class="card__title">毛（ウールなど）</h3>
+          <p class="card__desc">保温・弾力・防シワ。冬向けの高級感ある風合い。</p>
+          <div class="card__tag"><span class="dot"></span><span>保温</span><span class="more">詳細</span></div>
+        </div>
+      </article>
+
+      <!-- 7. 人工皮革・合成皮革 -->
+      <article class="card" tabindex="0"
+        data-title="人工皮革・合成皮革"
+        data-detail="天然皮革の質感を再現しつつ均質性と軽さを両立。メンテナンス性が高く、動物由来資源の使用削減にも寄与。"
+        data-tags="フェイクレザー, 均質, 取扱簡単">
+        <div class="card__img"><img src="https://picsum.photos/seed/fabric/600/400" alt="人工皮革の生地サンプル（ダミー）"></div>
+        <div class="card__body">
+          <h3 class="card__title">人工皮革・合成皮革</h3>
+          <p class="card__desc">レザー調の高級感と扱いやすさを両立。</p>
+          <div class="card__tag"><span class="dot"></span><span>レザー調</span><span class="more">詳細</span></div>
+        </div>
+      </article>
+
+      <!-- 8. ポリウレタン -->
+      <article class="card" tabindex="0"
+        data-title="ポリウレタン"
+        data-detail="優れた伸縮性（スパンデックス/エラスタン）。混紡でフィット感を向上し、シワ戻りも良い。"
+        data-tags="伸縮, 快適, 混紡向け">
+        <div class="card__img"><img src="https://picsum.photos/seed/fabric/600/400" alt="ポリウレタンの生地サンプル（ダミー）"></div>
+        <div class="card__body">
+          <h3 class="card__title">ポリウレタン</h3>
+          <p class="card__desc">高い伸縮性でフィット感を付与。混紡に最適。</p>
+          <div class="card__tag"><span class="dot"></span><span>伸縮</span><span class="more">詳細</span></div>
+        </div>
+      </article>
+
+      <!-- 9. アクリル -->
+      <article class="card" tabindex="0"
+        data-title="アクリル"
+        data-detail="軽くて暖かく、発色性に優れる。ウール調の風合いを表現しやすく、マフラーやニット小物にも。"
+        data-tags="軽量, 保温, 発色">
+        <div class="card__img"><img src="https://picsum.photos/seed/fabric/600/400" alt="アクリルの生地サンプル（ダミー）"></div>
+        <div class="card__body">
+          <h3 class="card__title">アクリル</h3>
+          <p class="card__desc">軽く暖かい。ウール調の風合いと鮮やかな発色。</p>
+          <div class="card__tag"><span class="dot"></span><span>発色</span><span class="more">詳細</span></div>
+        </div>
+      </article>
+
+      <!-- 10. レーヨン -->
+      <article class="card" tabindex="0"
+        data-title="レーヨン"
+        data-detail="再生繊維。とろみのある落ち感と上品な光沢、吸水性を備える。ドレープの美しさが魅力。"
+        data-tags="再生繊維, ドレープ, 吸水">
+        <div class="card__img"><img src="https://picsum.photos/seed/fabric/600/400" alt="レーヨンの生地サンプル（ダミー）"></div>
+        <div class="card__body">
+          <h3 class="card__title">レーヨン</h3>
+          <p class="card__desc">とろみと光沢。吸水性が高く上品な落ち感。</p>
+          <div class="card__tag"><span class="dot"></span><span>とろみ</span><span class="more">詳細</span></div>
+        </div>
+      </article>
+
+      <!-- 11. アセテート -->
+      <article class="card" tabindex="0"
+        data-title="アセテート"
+        data-detail="シルキーな光沢感と滑らかさ。静電気が起きにくく、裏地やフォーマル用途で重宝。"
+        data-tags="光沢, 裏地, フォーマル">
+        <div class="card__img"><img src="https://picsum.photos/seed/fabric/600/400" alt="アセテートの生地サンプル（ダミー）"></div>
+        <div class="card__body">
+          <h3 class="card__title">アセテート</h3>
+          <p class="card__desc">シルク調の光沢。静電気が少なく裏地にも最適。</p>
+          <div class="card__tag"><span class="dot"></span><span>光沢</span><span class="more">詳細</span></div>
+        </div>
+      </article>
+
+      <!-- 12. 絹（シルク） -->
+      <article class="card" tabindex="0"
+        data-title="絹（シルク）"
+        data-detail="独特の光沢と滑らかさ。保温・吸放湿性にも優れ、ラグジュアリーな質感を演出。取り扱いはデリケート。"
+        data-tags="天然繊維, 光沢, 高級">
+        <div class="card__img"><img src="https://picsum.photos/seed/fabric/600/400" alt="シルクの生地サンプル（ダミー）"></div>
+        <div class="card__body">
+          <h3 class="card__title">絹（シルク）</h3>
+          <p class="card__desc">唯一無二の光沢としなやかさ。高級ラインに。</p>
+          <div class="card__tag"><span class="dot"></span><span>高級</span><span class="more">詳細</span></div>
+        </div>
+      </article>
+
+      <!-- 13. 西陣織 -->
+      <article class="card" tabindex="0"
+        data-title="西陣織"
+        data-detail="京都の伝統的高級織物。金銀糸や緻密な文様表現により、格式ある意匠を具現化。贈答・VIP向けに最適。"
+        data-tags="伝統織物, 文様, 格式">
+        <div class="card__img"><img src="https://picsum.photos/seed/fabric/600/400" alt="西陣織の生地サンプル（ダミー）"></div>
+        <div class="card__body">
+          <h3 class="card__title">西陣織</h3>
+          <p class="card__desc">伝統の意匠と格。VIPギフトにも映える高級織物。</p>
+          <div class="card__tag"><span class="dot"></span><span>伝統</span><span class="more">詳細</span></div>
+        </div>
+      </article>
+
+      <!-- 14. 藍染 -->
+      <article class="card" tabindex="0"
+        data-title="藍染"
+        data-detail="自然由来の深い藍。使うほどに味わいが増し、色の変化も楽しめる。防虫・消臭の伝承も。"
+        data-tags="天然染色, 深い藍, 経年変化">
+        <div class="card__img"><img src="https://picsum.photos/seed/fabric/600/400" alt="藍染の生地サンプル（ダミー）"></div>
+        <div class="card__body">
+          <h3 class="card__title">藍染</h3>
+          <p class="card__desc">深い藍色と経年の味わい。ナチュラルな高級感。</p>
+          <div class="card__tag"><span class="dot"></span><span>藍</span><span class="more">詳細</span></div>
+        </div>
+      </article>
+
+      <!-- 15. 生地1 -->
+      <article class="card" tabindex="0"
+        data-title="生地1（プレースホルダー）"
+        data-detail="例：コットン×リネン混。吸水と通気のバランスが良く、ナチュラルさと実用性を両立。"
+        data-tags="混紡, バランス, ナチュラル">
+        <div class="card__img"><img src="https://picsum.photos/seed/fabric/600/400" alt="生地1のサンプル（ダミー）"></div>
+        <div class="card__body">
+          <h3 class="card__title">生地1</h3>
+          <p class="card__desc">プレースホルダー：コットン×リネン混など。</p>
+          <div class="card__tag"><span class="dot"></span><span>混紡</span><span class="more">詳細</span></div>
+        </div>
+      </article>
+
+      <!-- 16. 生地2 -->
+      <article class="card" tabindex="0"
+        data-title="生地2（プレースホルダー）"
+        data-detail="例：オーガニックコットン天竺。肌あたりの優しさと環境配慮の両立。"
+        data-tags="オーガニック, 肌ざわり, CSR">
+        <div class="card__img"><img src="https://picsum.photos/seed/fabric/600/400" alt="生地2のサンプル（ダミー）"></div>
+        <div class="card__body">
+          <h3 class="card__title">生地2</h3>
+          <p class="card__desc">プレースホルダー：オーガニックコットン天竺など。</p>
+          <div class="card__tag"><span class="dot"></span><span>オーガニック</span><span class="more">詳細</span></div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <dialog class="modal" id="modal" aria-labelledby="modalTitle" aria-modal="true">
+    <div class="modal__panel" role="document">
+      <div class="modal__head">
+        <h2 class="modal__title" id="modalTitle">Title</h2>
+        <button class="modal__close" id="closeBtn" aria-label="閉じる（Escでも閉じます）">閉じる</button>
+      </div>
+      <div class="modal__body">
+        <div class="modal__img"><img id="modalImg" src="" alt=""></div>
+        <div class="modal__content">
+          <p id="modalDesc">Detail</p>
+          <div class="modal__meta" id="modalTags"></div>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <footer>© Fil Bridge</footer>
+
+  <script>
+    // シンプルなモーダル制御
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalImg = document.getElementById('modalImg');
+    const modalDesc = document.getElementById('modalDesc');
+    const modalTags = document.getElementById('modalTags');
+    const closeBtn = document.getElementById('closeBtn');
+
+    function openModalFromCard(card){
+      const title = card.dataset.title || card.querySelector('.card__title')?.textContent.trim();
+      const img = card.querySelector('img')?.src;
+      const alt = card.querySelector('img')?.alt || title;
+      const detail = card.dataset.detail || card.querySelector('.card__desc')?.textContent.trim();
+      const tags = (card.dataset.tags || '').split(',').map(s => s.trim()).filter(Boolean);
+
+      modalTitle.textContent = title || '素材';
+      modalImg.src = img || 'https://picsum.photos/seed/fabric/800/600';
+      modalImg.alt = alt;
+      modalDesc.textContent = detail || '';
+      modalTags.innerHTML = '';
+      tags.forEach(t => {
+        const span = document.createElement('span');
+        span.className = 'pill';
+        span.textContent = t;
+        modalTags.appendChild(span);
+      });
+
+      modal.showModal();
+    }
+
+    document.addEventListener('click', (e)=>{
+      const card = e.target.closest('.card');
+      if(card){ openModalFromCard(card); }
+      if(e.target === modal){ modal.close(); } // 背景クリックで閉じる
+    });
+
+    // キーボード操作 (Enter/Spaceで開く、Escで閉じる)
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape' && modal.open){ modal.close(); }
+      if((e.key === 'Enter' || e.key === ' ') && document.activeElement?.classList.contains('card')){
+        e.preventDefault();
+        openModalFromCard(document.activeElement);
+      }
+    });
+
+    closeBtn.addEventListener('click', ()=> modal.close());
+  </script>
+</body>
+</html>
