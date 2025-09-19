@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大企業向け高級販促ノベルティ - フィルブリッジ</title>
+    <style>
+        :root {
+            --primary-dark: #4A4A4A;
+            --primary-teal: #5BA5A5;
+            --accent-light: #F8FAFB;
+            --text-dark: #1A1A1A;
+            --text-medium: #4A5568;
+            --text-light: #718096;
+            --white: #FFFFFF;
+            --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-large: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --gradient-primary: linear-gradient(135deg, var(--primary-teal) 0%, #7DC4C4 100%);
+            --gradient-dark: linear-gradient(135deg, var(--primary-dark) 0%, #2D2D2D 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Hiragino Kaku Gothic Pro', 'Yu Gothic Medium', YuGothic, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .container-wide {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Modern Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(91, 165, 165, 0.1);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 24px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
+        .logo-mark {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-dark);
+            border-radius: 8px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo-mark::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            right: 4px;
+            width: 12px;
+            height: 12px;
+            background: var(--primary-teal);
+            border-radius: 50%;
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary-dark);
+            letter-spacing: -0.025em;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-medium);
+            font-weight: 500;
+            font-size: 14px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-teal);
+            background: rgba(91, 165, 165, 0.08);
+        }
+
+        .nav-cta {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            box-shadow: var(--shadow-light);
+            transition: all 0.2s ease;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-medium);
+            color: var(--white);
+            background: var(--gradient-primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--accent-light);
+            padding: 140px 0 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -400px;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(91, 165, 165, 0.05) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--text-dark);
+            margin-bottom: 24px;
+            letter-spacing: -0.02em;
+        }
+
+        .hero-text .subtitle {
+            font-size: 20px;
+            color: var(--primary-teal);
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .hero-text .description {
+            font-size: 18px;
+            color: var(--text-medium);
+            line-height: 1.7;
+            margin-bottom: 40px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            box-shadow: var(--shadow-medium);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-large);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary-dark);
+            padding: 16px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            border: 2px solid var(--primary-dark);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-dark);
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .hero-visual {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .hero-card {
+            background: var(--white);
+            padding: 32px 24px;
+            border-radius: 20px;
+            box-shadow: var(--shadow-medium);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .hero-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-large);
+        }
+
+        .hero-card:nth-child(2) {
+            margin-top: 40px;
+        }
+
+        .hero-icon {
+            width: 64px;
+            height: 64px;
+            background: var(--gradient-primary);
+            border-radius: 16px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: var(--white);
+        }
+
+        .hero-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-dark);
+        }
+
+        .hero-card p {
+            font-size: 14px;
+            color: var(--text-medium);
+            line-height: 1.5;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-alt {
+            background: var(--accent-light);
+        }
+
+        .section-dark {
+            background: var(--gradient-dark);
+            color: var(--white);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .section-title {
+            font-size: 40px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: var(--text-dark);
+            letter-spacing: -0.02em;
+        }
+
+        .section-dark .section-title {
+            color: var(--white);
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-medium);
+            line-height: 1.6;
+        }
+
+        .section-dark .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow-light);
+            border: 1px solid rgba(91, 165, 165, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-large);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-primary);
+            border-radius: 20px;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: var(--white);
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+
+        .feature-card p {
+            color: var(--text-medium);
+            line-height: 1.7;
+        }
+
+        /* Stats Section */
+        .stats-section {
+            background: var(--gradient-dark);
+            color: var(--white);
+            padding: 80px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 60px;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-item p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* Process Section */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+        }
+
+        .process-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow-light);
+            text-align: center;
+            position: relative;
+            border: 1px solid rgba(91, 165, 165, 0.1);
+        }
+
+        .process-number {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .process-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin: 20px 0 16px;
+            color: var(--text-dark);
+        }
+
+        .process-card p {
+            color: var(--text-medium);
+            line-height: 1.6;
+        }
+
+        /* Comparison Section */
+        .comparison-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .comparison-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--shadow-medium);
+            position: relative;
+        }
+
+        .comparison-card.problem {
+            border-top: 4px solid #EF4444;
+        }
+
+        .comparison-card.solution {
+            border-top: 4px solid var(--primary-teal);
+        }
+
+        .comparison-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .comparison-header h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .comparison-list {
+            list-style: none;
+        }
+
+        .comparison-list li {
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .comparison-list li:last-child {
+            border-bottom: none;
+        }
+
+        .comparison-list li::before {
+            content: '❌';
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+
+        .comparison-card.solution .comparison-list li::before {
+            content: '✅';
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            border-radius: 16px;
+            margin-bottom: 16px;
+            box-shadow: var(--shadow-light);
+            overflow: hidden;
+            border: 1px solid rgba(91, 165, 165, 0.1);
+        }
+
+        .faq-question {
+            background: var(--white);
+            color: var(--text-dark);
+            padding: 24px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 18px;
+            border: none;
+            width: 100%;
+            text-align: left;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .faq-question:hover {
+            background: rgba(91, 165, 165, 0.05);
+        }
+
+        .faq-question::after {
+            content: '+';
+            position: absolute;
+            right: 24px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            font-weight: 300;
+            color: var(--primary-teal);
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active::after {
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 0 24px 24px;
+            color: var(--text-medium);
+            line-height: 1.7;
+            display: none;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gradient-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -200px;
+            left: -200px;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(91, 165, 165, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-content h2 {
+            font-size: 40px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .cta-content p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 60px;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 32px;
+            margin-top: 60px;
+            text-align: left;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--gradient-primary);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        .contact-text h4 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .contact-text p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .hero-text h1 {
+                font-size: 36px;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .features-grid,
+            .process-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        /* Modern scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--accent-light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-teal);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-dark);
+        }
+    </style>
+</head>
+<body>
+    <!-- Modern Header -->
+    <header class="header">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-mark"></div>
+                <div class="logo-text">Fil Bridge</div>
+            </div>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#features" class="nav-link">こだわり</a></li>
+                    <li><a href="#csr" class="nav-link">CSR</a></li>
+                    <li><a href="#premium" class="nav-link">プレミアム</a></li>
+                    <li><a href="#process" class="nav-link">製作流れ</a></li>
+                    <li><a href="#faq" class="nav-link">FAQ</a></li>
+                    <li><a href="#contact" class="nav-cta">お問合せ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container-wide">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="subtitle">大企業向け高級販促ノベルティ</div>
+                    <h1>記憶に残る特別な<br>贈り物を創造</h1>
+                    <p class="description">従来の安価で画一的な販促ノベルティから脱却。日本の伝統技術と高品質素材を活用し、受け取る方に真に喜ばれるプレミアムノベルティで、企業ブランドの価値向上を実現します。</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn-primary">無料相談を開始</a>
+                        <a href="#features" class="btn-secondary">こだわりを見る</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="hero-card">
+                        <div class="hero-icon">🇯🇵</div>
+                        <h3>国産素材100%</h3>
+                        <p>契約農家から直接調達する高品質な天然繊維</p>
+                    </div>
+                    <div class="hero-card">
+                        <div class="hero-icon">⚙️</div>
+                        <h3>独自技術</h3>
+                        <p>一つの素材から無限の可能性を引き出す加工技術</p>
+                    </div>
+                    <div class="hero-card">
+                        <div class="hero-icon">🏆</div>
+                        <h3>プレミアム品質</h3>
+                        <p>95%以上の検品合格率を誇る厳格な品質管理</p>
+                    </div>
+                    <div class="hero-card">
+                        <div class="hero-icon">🌱</div>
+                        <h3>CSR効果</h3>
+                        <p>農家・職人支援による社会貢献の実現</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>95%</h3>
+                    <p>検品合格率</p>
+                </div>
+                <div class="stat-item">
+                    <h3>60個</h3>
+                    <p>最小ロット数</p>
+                </div>
+                <div class="stat-item">
+                    <h3>400年</h3>
+                    <p>西陣織の伝統</p>
+                </div>
+                <div class="stat-item">
+                    <h3>24h</h3>
+                    <p>平均回答時間</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">フィルブリッジのこだわり</h2>
+                <p class="section-subtitle">国産繊維と独自の加工技術で、他社では実現できない特別なノベルティを創造します</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🇯🇵</div>
+                    <h3>国産繊維への徹底したこだわり</h3>
+                    <p>全国各地の契約農家から直接調達する天然藍や綿花、絹など、日本で育まれた最高品質の繊維のみを使用。産地の気候と土壌が育む独特の風合いと色合いは、海外製品では決して再現できない日本ならではの価値を生み出します。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">⚙️</div>
+                    <h3>独自の素材変革技術</h3>
+                    <p>一つの素材から全く別の表情を持つ生地を創造する、フィルブリッジ独自の加工技術。天然藍を使った多彩な染色技法、西陣織の「先染め×設計」による立体的な柄表現、特殊な織り技術による質感の変化など、同じ原料から無限の可能性を引き出します。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>伝統と革新の融合</h3>
+                    <p>400年の歴史を持つ西陣織の伝統技術と、現代のデザインセンスを融合。職人の手仕事による繊細な表現力と、最新のデジタル技術による精密な品質管理を組み合わせることで、伝統的でありながら現代的な感性にも響く製品を創造しています。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CSR Section -->
+    <section id="csr" class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">CSR活動との連携で社会貢献</h2>
+                <p class="section-subtitle">ノベルティ製作を通じて、持続可能な社会づくりに貢献します</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🌾</div>
+                    <h3>日本の農家支援</h3>
+                    <p>国内農家から直接調達する天然藍や綿花により、地域農業の持続的発展を支援。農家の顔が見える安心のトレーサビリティで、企業の社会貢献をアピールできます。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <h3>伝統工芸士の雇用創出</h3>
+                    <p>西陣織や藍染の伝統技術を継承する職人の雇用を創出。日本の文化遺産を次世代に継承しながら、職人の技術向上と生活安定に貢献しています。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">♻️</div>
+                    <h3>環境配慮・サステナビリティ</h3>
+                    <p>天然素材の使用と、長期間使用できる耐久性で廃棄物を削減。環境負荷の少ない製造プロセスで、企業の環境方針に沿ったノベルティを実現します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Features -->
+    <section id="premium" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">プレミアムノベルティの特長</h2>
+                <p class="section-subtitle">競合他社では提供できない、特別な価値をお届けします</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🏆</div>
+                    <h3>高級感と特別感</h3>
+                    <p>西陣織や天然藍染など、日本の伝統技術を活用した上質な仕上がり。受け取る方に「特別な贈り物」として印象に残り、企業イメージの向上に直結します。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">🎨</div>
+                    <h3>完全オリジナル製作</h3>
+                    <p>企業ロゴの箔押し、コーポレートカラーでの特別染色、刺繍での名入れなど、他社にはないオリジナリティを実現。最小60個からの小ロット対応で、特別な企画にも対応可能です。</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <h3>デジタル連携サービス</h3>
+                    <p>名入れプレビューシステムで事前確認、製作工程の可視化、QRコードでの製品ストーリー紹介など、現代のニーズに対応したデジタルサービスを提供します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">大企業向け製作の流れ</h2>
+                <p class="section-subtitle">専任担当者による一貫したサポートで、安心してお任せいただけます</p>
+            </div>
+            
+            <div class="process-grid">
+                <div class="process-card">
+                    <div class="process-number">1</div>
+                    <h3>ご相談・企画提案</h3>
+                    <p>大企業専任の担当者が、ご要望を詳しくヒアリング。ノベルティの目的、ターゲット、予算、納期、CSR要素など、包括的な企画をご提案いたします。</p>
+                </div>
+                
+                <div class="process-card">
+                    <div class="process-number">2</div>
+                    <h3>サンプル製作・承認</h3>
+                    <p>実際の素材サンプルと試作品をお送りし、品質をご確認いただきます。名入れプレビューシステムで仕上がりイメージをリアルタイム確認。</p>
+                </div>
+                
+                <div class="process-card">
+                    <div class="process-number">3</div>
+                    <h3>契約・スケジュール調整</h3>
+                    <p>大企業の調達プロセスに対応した契約書類の整備と、詳細なスケジュール管理。展示会やイベントに合わせた逆算スケジュールで、確実な納期をお約束します。</p>
+                </div>
+                
+                <div class="process-card">
+                    <div class="process-number">4</div>
+                    <h3>製造・品質管理</h3>
+                    <p>伝統技術による丁寧な手仕事と、大企業基準の厳格な品質管理を両立。製造工程の可視化により、進捗状況をリアルタイムでご確認いただけます。</p>
+                </div>
+                
+                <div class="process-card">
+                    <div class="process-number">5</div>
+                    <h3>納品・効果測定</h3>
+                    <p>指定納期での確実な納品と、特別包装・個別配送にも対応。納品後は効果測定レポートをご提供し、次回企画への改善提案も行います。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">従来ノベルティとの比較</h2>
+                <p class="section-subtitle">なぜフィルブリッジのノベルティが選ばれるのか</p>
+            </div>
+            
+            <div class="comparison-container">
+                <div class="comparison-card problem">
+                    <div class="comparison-header">
+                        <h3>従来の販促ノベルティの課題</h3>
+                    </div>
+                    <ul class="comparison-list">
+                        <li>安価で画一的、どこも似たり寄ったり</li>
+                        <li>壊れやすく、すぐに使われなくなる</li>
+                        <li>もらっても嬉しくない、印象に残らない</li>
+                        <li>ブランド価値の向上につながらない</li>
+                        <li>CSR・社会貢献の要素がない</li>
+                        <li>競合との差別化が困難</li>
+                    </ul>
+                </div>
+
+                <div class="comparison-card solution">
+                    <div class="comparison-header">
+                        <h3>フィルブリッジの高級ノベルティ</h3>
+                    </div>
+                    <ul class="comparison-list">
+                        <li>高品質で特別感のある日本製</li>
+                        <li>長期間愛用される耐久性</li>
+                        <li>受け取る方が本当に喜ぶ上質な贈り物</li>
+                        <li>企業ブランドの価値向上に寄与</li>
+                        <li>日本の農家・職人支援でCSR効果</li>
+                        <li>競合企業にはない独自性</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">よくあるご質問</h2>
+                <p class="section-subtitle">大企業の担当者様からよく寄せられるご質問にお答えします</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-question">従来の低価格ノベルティと比べて、投資効果はどうですか？</button>
+                    <div class="faq-answer">高品質なノベルティは受け取る方の満足度が高く、長期間使用されるため、ブランド露出効果が格段に向上します。また、CSR活動との連携により企業イメージの向上効果も期待でき、中長期的には非常に高い投資効果を実現できます。</div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">大量発注の場合の価格体系と最小ロット数について</button>
+                    <div class="faq-answer">最小60個から承っており、数量に応じたボリュームディスカウントをご提供します。年間契約や複数回発注による特別価格設定も可能です。大企業様向けの専用価格表をご用意しておりますので、詳細はお問い合わせください。</div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">CSR活動としての効果はどのように証明できますか？</button>
+                    <div class="faq-answer">農家との直接契約書、職人雇用証明、CO2削減効果レポートなど、CSR活動の根拠となる資料を一式ご提供します。企業のサステナビリティレポートやCSRレポートにご活用いただける詳細な資料をご用意しています。</div>
+                </div>
+                
+                <div class="faq-item">
+                    <button class="faq-question">緊急時の対応や、短期間での製作は可能ですか？</button>
+                    <div class="faq-answer">大企業専任チームによる緊急時対応体制を整備しています。通常2-4週間の納期を、場合によっては1-2週間まで短縮可能です。ただし、品質を確保するため、緊急時でも最低限の製作期間は必要となります。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>大企業向け専用窓口</h2>
+                <p>専任担当者がお客様の企業に最適なプレミアムノベルティをご提案いたします。まずはお気軽にご相談ください。お見積もり・企画提案は無料です。</p>
+                
+                <div class="cta-buttons">
+                    <a href="#" class="btn-primary">無料相談を申し込む</a>
+                    <a href="#" class="btn-secondary">資料をダウンロード</a>
+                </div>
+
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-text">
+                            <h4>専用ダイヤル</h4>
+                            <p>0120-XXX-XXX（平日9:00-18:00）</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-text">
+                            <h4>専用メール</h4>
+                            <p>enterprise@filbridge.co.jp</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">⏱️</div>
+                        <div class="contact-text">
+                            <h4>回答時間</h4>
+                            <p>通常24時間以内にご回答</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📋</div>
+                        <div class="contact-text">
+                            <h4>専用カタログ</h4>
+                            <p>大企業向け事例集をご用意</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // FAQ functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isOpen = answer.style.display === 'block';
+                
+                // Close all other answers
+                document.querySelectorAll('.faq-answer').forEach(ans => {
+                    ans.style.display = 'none';
+                });
+                document.querySelectorAll('.faq-question').forEach(q => {
+                    q.classList.remove('active');
+                });
+                
+                // Toggle current answer
+                if (!isOpen) {
+                    answer.style.display = 'block';
+                    question.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerOffset = 80;
+                    const elementPosition = target.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.feature-card, .process-card, .comparison-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
