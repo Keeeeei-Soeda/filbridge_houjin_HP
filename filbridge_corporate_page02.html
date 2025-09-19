@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>法人のお客様へ｜Fil Bridge（フィルブリッジ）</title>
+  <meta name="description" content="日本産原料×肌ざわり×ナチュラル&高級感。“長く使われる”プレミアム販促ノベルティ・OEMを、サンプルから短期試作まで伴走します。" />
+
+  <!-- =====================  Design Tokens  ===================== -->
+  <style>
+    :root{
+      --brand-teal:#00A2A8;          /* ロゴ由来のティール */
+      --brand-ink:#43403F;           /* 深いグレー（テキスト） */
+      --bg:#EEF2F5;                  /* うっすらブルーグレー背景（PDF寄り） */
+      --card:#ffffff;
+      --muted:#6B7280;
+      --accent:#00A2A8;
+      --ring: rgba(0,162,168,.3);
+      --maxw: 1200px;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,.06);
+    }
+    /* Base */
+    html,body{height:100%}
+    body{
+      margin:0; font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Segoe UI", Roboto, "Helvetica Neue", Arial, "メイリオ", sans-serif;
+      color:var(--brand-ink); background:radial-gradient(1200px 600px at 10% -10%, #F7F9FB, transparent), var(--bg);
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    }
+    a{ color:var(--brand-ink); text-decoration:none }
+    img{ max-width:100%; height:auto; display:block }
+    .container{ width:100%; max-width:var(--maxw); margin:0 auto; padding:0 20px }
+
+    /* Header */
+    .site-header{ position:sticky; top:0; z-index:999; background:#fff8; backdrop-filter:saturate(150%) blur(8px); border-bottom:1px solid #e8ecef }
+    .site-header__inner{ display:flex; align-items:center; gap:24px; padding:12px 20px }
+    .brand{ display:flex; align-items:center; gap:12px }
+    .brand img{ width:36px; height:36px; object-fit:contain }
+    .brand__name{ font-weight:600; letter-spacing:.02em }
+    nav{ margin-left:auto }
+    .nav{ display:flex; gap:18px; align-items:center; flex-wrap:wrap }
+    .nav a{ font-size:14px; color:#333; opacity:.9 }
+    .nav a:hover{ color:var(--brand-teal) }
+    .btn{ display:inline-flex; align-items:center; justify-content:center; gap:.5em; padding:12px 18px; border-radius:999px; border:1px solid transparent; font-weight:600; cursor:pointer; transition:.2s ease; }
+    .btn--teal{ background:var(--brand-teal); color:#fff; box-shadow:0 6px 20px rgba(0,162,168,.25) }
+    .btn--teal:hover{ filter:brightness(0.97) }
+    .btn--ghost{ background:#fff; color:var(--brand-ink); border-color:#e6eaee }
+    .btn--ghost:hover{ border-color:var(--brand-teal); color:var(--brand-teal) }
+
+    /* Hero */
+    .hero{ position:relative; padding:64px 0 48px }
+    .hero__grid{ display:grid; grid-template-columns: 1.2fr .8fr; gap:28px; align-items:center }
+    .eyebrow{ font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--brand-teal); font-weight:700 }
+    .hero h1{ font-size: clamp(28px, 4vw, 44px); line-height:1.2; margin:.35em 0 }
+    .hero p{ color:#4b5563; font-size:16px }
+    .hero__cta{ display:flex; gap:12px; margin-top:20px; flex-wrap:wrap }
+    .hero__media{ position:relative; border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); background:#fff }
+    .hero__media::after{ /* 簡易テクスチャ */ content:""; position:absolute; inset:0; background:radial-gradient(800px 300px at 100% 0%, rgba(0,162,168,.08), transparent) }
+
+    /* Bars / chips */
+    .logo-bar{ display:flex; gap:28px; flex-wrap:wrap; align-items:center; opacity:.9; padding:14px 0 }
+    .chip{ display:inline-flex; align-items:center; gap:8px; font-size:12px; padding:8px 12px; border-radius:999px; background:#fff; border:1px solid #e8ecef }
+    .dot{ width:8px; height:8px; border-radius:50%; background:var(--brand-teal) }
+
+    /* Section */
+    section{ padding:56px 0 }
+    .section__hd{ margin-bottom:22px }
+    .section__eyebrow{ font-size:12px; letter-spacing:.18em; text-transform:uppercase; color:var(--brand-teal); font-weight:700 }
+    .section__title{ font-size: clamp(22px, 3vw, 32px); margin:.3em 0 }
+    .section__lead{ color:#4b5563 }
+
+    /* Cards */
+    .grid{ display:grid; gap:18px }
+    .grid-3{ grid-template-columns: repeat(3, 1fr) }
+    .grid-2{ grid-template-columns: repeat(2, 1fr) }
+    .card{ background:var(--card); border:1px solid #e8ecef; border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden }
+    .card__body{ padding:18px 18px 20px }
+    .card h3{ margin:0 0 8px; font-size:18px }
+    .card p{ margin:0; color:#4b5563; font-size:14px }
+
+    /* Compare Table */
+    .compare{ overflow:auto; background:#fff; border:1px solid #e8ecef; border-radius:var(--radius) }
+    table{ width:100%; border-collapse:collapse; font-size:14px }
+    th, td{ padding:14px 12px; border-bottom:1px solid #eef2f5; text-align:left; vertical-align:top }
+    th{ background:#f8fafc; font-weight:700 }
+
+    /* Timeline */
+    .steps{ display:grid; grid-template-columns: repeat(7, minmax(120px,1fr)); gap:10px; overflow:auto }
+    .step{ background:#fff; border:1px solid #e8ecef; border-radius:12px; padding:12px; font-size:13px }
+    .step b{ display:block; margin-bottom:4px }
+    .step small{ color:#6b7280 }
+
+    /* Product cards */
+    .tag{ display:inline-block; font-size:11px; padding:4px 8px; border:1px solid #e8ecef; border-radius:999px; color:#374151; background:#fff }
+    .tag.-teal{ border-color:rgba(0,162,168,.25); color:#096a6f; background:rgba(0,162,168,.05) }
+
+    /* FAQ */
+    details{ border:1px solid #e8ecef; background:#fff; border-radius:12px; padding:14px 16px }
+    details+details{ margin-top:10px }
+    summary{ cursor:pointer; font-weight:600 }
+
+    /* Forms */
+    .form{ background:#fff; border:1px solid #e8ecef; border-radius:var(--radius); padding:18px; box-shadow:var(--shadow) }
+    .field{ display:grid; gap:6px; margin:12px 0 }
+    .field label{ font-size:13px; color:#374151 }
+    .field input,.field select,.field textarea{
+      appearance:none; width:100%; padding:12px 14px; border-radius:12px; border:1px solid #e5e7eb; font-size:14px; background:#fff;
+    }
+    .field input:focus,.field select:focus,.field textarea:focus{ outline:2px solid var(--ring); border-color:var(--brand-teal) }
+
+    /* Sticky CTA (mobile) */
+    .sticky-cta{ position:fixed; left:0; right:0; bottom:0; z-index:998; display:none; gap:10px; background:#ffffffee; backdrop-filter:blur(6px); border-top:1px solid #e8ecef; padding:10px 16px }
+    .sticky-cta .btn{ flex:1 }
+    @media (max-width: 960px){
+      .hero__grid{ grid-template-columns:1fr }
+      .grid-3{ grid-template-columns:1fr 1fr }
+      .grid-2{ grid-template-columns:1fr }
+      .site-header__inner{ padding:10px 14px }
+      nav{ display:none }            /* シンプルに：必要ならハンバーガー追加可 */
+      .sticky-cta{ display:flex }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- =====================  Header  ===================== -->
+  <header class="site-header">
+    <div class="site-header__inner container">
+      <a href="/" class="brand" aria-label="Fil Bridge ホーム">
+        <img src="assets/logo-filbridge.png" alt="Fil Bridge" />
+        <strong class="brand__name">Fil Bridge</strong>
+      </a>
+      <nav aria-label="グローバルナビ">
+        <div class="nav">
+          <a href="#about">ABOUT</a>
+          <a href="#products">PRODUCT</a>
+          <a href="#oem">OEM</a>
+          <a href="#news">NEWS</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">CONTACT</a>
+          <a class="btn btn--ghost" href="/account/login">ログイン</a>
+          <a class="btn btn--teal"  href="/account/register">会員登録</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- =====================  Hero  ===================== -->
+  <section class="hero">
+    <div class="container hero__grid">
+      <div>
+        <div class="eyebrow">CORPORATE CUSTOMERS</div>
+        <h1>“もらって終わり”を、<br>“長く使われる体験”へ。</h1>
+        <p>日本産の原料、手に伝わる肌ざわり、ナチュラルで上質な佇まい。  
+          プレミアム販促ノベルティ／OEMを、サンプルから短期試作までワンストップで。</p>
+        <div class="hero__cta">
+          <a href="#sample" class="btn btn--teal">サンプル請求</a>
+          <a href="#contact" class="btn btn--ghost">30分オンライン相談</a>
+        </div>
+        <div class="logo-bar" aria-label="主なお取引カテゴリ">
+          <span class="chip"><span class="dot"></span>ホテル・スパ</span>
+          <span class="chip"><span class="dot"></span>コスメ・美容</span>
+          <span class="chip"><span class="dot"></span>食品・ギフト</span>
+          <span class="chip"><span class="dot"></span>展示会・イベント</span>
+          <span class="chip"><span class="dot"></span>EC同梱</span>
+        </div>
+      </div>
+      <div class="hero__media">
+        <img src="https://picsum.photos/800/600?random=21" alt="上質な布のテクスチャとギフトのイメージ">
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================  課題 → 解決（比較）  ===================== -->
+  <section id="about">
+    <div class="container">
+      <div class="section__hd">
+        <div class="section__eyebrow">INSIGHT</div>
+        <h2 class="section__title">ノベルティは“安価大量配布”から、“ブランド価値を伝える体験”へ</h2>
+        <p class="section__lead">似たり寄ったり・壊れやすい・捨てられやすい従来ノベルティ。<br>今は、長く使われる上質素材と触感で“記憶に残る”方向へ移行しています。</p>
+      </div>
+
+      <div class="compare">
+        <table>
+          <thead>
+            <tr>
+              <th>従来のノベルティ</th>
+              <th>Fil Bridgeのプレミアム布ノベルティ</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>安価・大量生産／どこも似た見た目</td>
+              <td>日本産原料 × 高密度設計で“触れた瞬間に違い”</td>
+            </tr>
+            <tr>
+              <td>壊れやすく、使用期間が短い</td>
+              <td>耐久性や色落ち等の検査をクリア、長く使われる</td>
+            </tr>
+            <tr>
+              <td>“配った数”は稼げるが、記憶に残りにくい</td>
+              <td>開封体験・名入れ・ストーリー同梱で想起率とSNS言及を後押し</td>
+            </tr>
+            <tr>
+              <td>CSRの語りどころが少ない</td>
+              <td>国産原料・産地ストーリー・寄付連動などCSR文脈を設計</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================  USP（強み）  ===================== -->
+  <section>
+    <div class="container">
+      <div class="section__hd">
+        <div class="section__eyebrow">WHY US</div>
+        <h2 class="section__title">日本産原料／肌ざわり／ナチュラル&高級感──三位一体の設計</h2>
+      </div>
+      <div class="grid grid-3">
+        <article class="card">
+          <img src="https://picsum.photos/800/600?random=1" alt="日本産原料イメージ">
+          <div class="card__body">
+            <h3>日本産原料の確かな出自</h3>
+            <p>産地・トレーサビリティを示せる“語れる品質”。CSRストーリーにも。</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="https://picsum.photos/800/600?random=2" alt="手に触れる肌ざわり">
+          <div class="card__body">
+            <h3>触れた瞬間にわかる“肌ざわり”</h3>
+            <p>番手・織り・仕上げまで最適化。思わず“使い続けたくなる”体験を。</p>
+          </div>
+        </article>
+        <article class="card">
+          <img src="https://picsum.photos/800/600?random=3" alt="ナチュラルで上質なデザイン">
+          <div class="card__body">
+            <h3>高級感×ナチュラルな意匠</h3>
+            <p>名入れ・刺繍・箔・パッケージまで一体設計。世界観に馴染む佇まい。</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================  CSR / 日本の生産者を応援  ===================== -->
+  <section>
+    <div class="container">
+      <div class="section__hd">
+        <div class="section__eyebrow">CSR & SUSTAINABILITY</div>
+        <h2 class="section__title">“日本の生産者を応援するノベルティ”という選択</h2>
+        <p class="section__lead">国産原料の採用、産地ストーリーカード、寄付連動など、CSR観点の設計をサポートします。</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card"><div class="card__body"><h3>国産原料の採用</h3><p>地域産業に資する素材選定。産地マップで社内説明も容易に。</p></div></div>
+        <div class="card"><div class="card__body"><h3>ストーリー同梱</h3><p>受け手に“背景”が伝わる解説カードを同梱。記憶に残る配布体験。</p></div></div>
+        <div class="card"><div class="card__body"><h3>寄付連動オプション</h3><p>売上の一部を産地へ寄付する等の仕組みづくりも相談可能。</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================  ラインナップ（触感×用途）  ===================== -->
+  <section id="products">
+    <div class="container">
+      <div class="section__hd">
+        <div class="section__eyebrow">LINEUP</div>
+        <h2 class="section__title">用途や世界観に合わせて選べる“触感”</h2>
+      </div>
+
+      <div class="grid grid-3">
+        <!-- Card 1 -->
+        <article class="card">
+          <img src="https://picsum.photos/800/600?random=31" alt="ふっくら（綿）">
+          <div class="card__body">
+            <h3>ふっくら（綿）</h3>
+            <p><span class="tag -teal">触感：ふっくら</span> <span class="tag">推奨：名入れ/刺繍</span> <span class="tag">MOQ：100〜</span></p>
+          </div>
+        </article>
+        <!-- Card 2 -->
+        <article class="card">
+          <img src="https://picsum.photos/800/600?random=32" alt="さらり（麻・和紙混）">
+          <div class="card__body">
+            <h3>さらり（麻・和紙混）</h3>
+            <p><span class="tag -teal">触感：さらり</span> <span class="tag">推奨：箔/台紙</span> <span class="tag">MOQ：100〜</span></p>
+          </div>
+        </article>
+        <!-- Card 3 -->
+        <article class="card">
+          <img src="https://picsum.photos/800/600?random=33" alt="しっとり（シルク混）">
+          <div class="card__body">
+            <h3>しっとり（シルク混）</h3>
+            <p><span class="tag -teal">触感：しっとり</span> <span class="tag">推奨：ギフト包装</span> <span class="tag">MOQ：100〜</span></p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================  プロセス（OEM/サンプル/試供品）  ===================== -->
+  <section id="oem">
+    <div class="container">
+      <div class="section__hd">
+        <div class="section__eyebrow">PROCESS</div>
+        <h2 class="section__title">ご相談から試作・量産までの流れ</h2>
+      </div>
+      <div class="steps" role="list">
+        <div class="step" role="listitem"><b>① 相談</b><small>要件ヒアリング</small></div>
+        <div class="step" role="listitem"><b>② 概算見積</b><small>数量・仕様でレンジ提示</small></div>
+        <div class="step" role="listitem"><b>③ ラフ提案</b><small>名入れ/包装含む</small></div>
+        <div class="step" role="listitem"><b>④ 試作</b><small>目安2週間</small></div>
+        <div class="step" role="listitem"><b>⑤ 確定見積</b><small>データ確定</small></div>
+        <div class="step" role="listitem"><b>⑥ 量産</b><small>4–6週間目安</small></div>
+        <div class="step" role="listitem"><b>⑦ 納品</b><small>分納/多拠点可</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================  品質・検査・梱包  ===================== -->
+  <section>
+    <div class="container">
+      <div class="section__hd">
+        <div class="section__eyebrow">QUALITY</div>
+        <h2 class="section__title">“長く使われる”ための仕様と検査</h2>
+      </div>
+      <div class="grid grid-3">
+        <div class="card"><div class="card__body"><h3>仕様</h3><p>番手・織り密度・仕上げの最適化で、触感と耐久を両立。</p></div></div>
+        <div class="card"><div class="card__body"><h3>検査</h3><p>色落ち/毛羽/寸法公差など工程ごとに検査、抜取基準を設定。</p></div></div>
+        <div class="card"><div class="card__body"><h3>梱包</h3><p>個装・台紙・ギフト包装まで提案。開封体験も設計します。</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================  価格 / MOQ / 納期（目安）  ===================== -->
+  <section>
+    <div class="container">
+      <div class="section__hd">
+        <div class="section__eyebrow">GUIDE</div>
+        <h2 class="section__title">価格・最小ロット・納期の目安</h2>
+      </div>
+      <div class="compare" role="region" aria-label="価格の目安">
+        <table>
+          <thead>
+          <tr><th>数量帯</th><th>名入れ方法</th><th>参考単価（税別）</th><th>標準納期</th></tr>
+          </thead>
+          <tbody>
+          <tr><td>100</td><td>刺繍/箔/台紙</td><td>¥1,200〜¥2,000</td><td>試作2週＋量産4–6週</td></tr>
+          <tr><td>500</td><td>刺繍/箔/台紙</td><td>¥900〜¥1,600</td><td>同上</td></tr>
+          <tr><td>1,000〜</td><td>刺繍/箔/台紙</td><td>¥750〜¥1,400</td><td>同上</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="section__lead">※版代/型代・送料・特急費用は別途。目安のため正式見積で確定します。</p>
+    </div>
+  </section>
+
+  <!-- =====================  FAQ  ===================== -->
+  <section id="faq">
+    <div class="container">
+      <div class="section__hd">
+        <div class="section__eyebrow">FAQ</div>
+        <h2 class="section__title">よくあるご質問</h2>
+      </div>
+      <details><summary>最小ロットは？</summary><p>名入れありは目安100個〜。仕様により変動しますのでご相談ください。</p></details>
+      <details><summary>短納期対応は可能？</summary><p>在庫・仕様によっては特急対応可。まずはご希望日程をお知らせください。</p></details>
+      <details><summary>CSR連動のやり方は？</summary><p>国産原料採用、産地カード同梱、寄付連動など複数オプションを用意しています。</p></details>
+    </div>
+  </section>
+
+  <!-- =====================  サンプル請求 / お問い合わせ  ===================== -->
+  <section id="sample">
+    <div class="container">
+      <div class="section__hd">
+        <div class="section__eyebrow">TRY & TALK</div>
+        <h2 class="section__title">まずは“触って”確かめてください</h2>
+        <p class="section__lead">サンプルは触感比較セットをご用意。CSRストーリーカード見本も同封可能です。</p>
+      </div>
+      <form class="form" action="/forms/sample" method="post">
+        <div class="grid grid-2">
+          <div class="field"><label for="c-name">会社名</label><input id="c-name" name="company" required></div>
+          <div class="field"><label for="p-name">ご担当者名</label><input id="p-name" name="person" required></div>
+          <div class="field"><label for="email">メール</label><input id="email" type="email" name="email" required></div>
+          <div class="field"><label for="tel">電話</label><input id="tel" type="tel" name="tel"></div>
+          <div class="field"><label for="use">用途</label>
+            <select id="use" name="use"><option>展示会・イベント</option><option>EC同梱</option><option>ホテル・スパ</option><option>ギフト・VIP</option></select>
+          </div>
+          <div class="field"><label for="qty">想定数量</label>
+            <select id="qty" name="qty"><option>100</option><option>500</option><option>1,000</option><option>その他</option></select>
+          </div>
+          <div class="field"><label for="focus">重視ポイント</label>
+            <select id="focus" name="focus">
+              <option>肌ざわり</option><option>国産原料</option><option>高級感</option><option>環境配慮</option><option>短納期</option>
+            </select>
+          </div>
+          <div class="field"><label for="msg">メッセージ</label><textarea id="msg" name="message" rows="4" placeholder="CSR連動の有無、希望納期など"></textarea></div>
+        </div>
+        <div style="display:flex; gap:10px; margin-top:8px">
+          <button class="btn btn--teal" type="submit">サンプルを申し込む</button>
+          <a class="btn btn--ghost" href="#contact">OEMの相談をする</a>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="container">
+      <div class="section__hd">
+        <div class="section__eyebrow">CONTACT</div>
+        <h2 class="section__title">30分オンライン相談（初回無料）</h2>
+        <p class="section__lead">最短当日中に折り返し。要件整理から概算見積まで素早くご提案します。</p>
+      </div>
+      <form class="form" action="/forms/contact" method="post">
+        <div class="grid grid-2">
+          <div class="field"><label for="co">会社名</label><input id="co" name="company" required></div>
+          <div class="field"><label for="nm">ご担当者名</label><input id="nm" name="person" required></div>
+          <div class="field"><label for="em">メール</label><input id="em" type="email" name="email" required></div>
+          <div class="field"><label for="dt">ご希望日時（任意）</label><input id="dt" type="text" name="datetime" placeholder="例：〇月〇日 午後"></div>
+          <div class="field"><label for="topic">ご相談内容</label>
+            <select id="topic" name="topic">
+              <option>販促ノベルティ（プレミアム）</option>
+              <option>企業試供品</option>
+              <option>OEM（フル／イージー）</option>
+              <option>その他</option>
+            </select>
+          </div>
+          <div class="field"><label for="note">詳細</label><textarea id="note" name="note" rows="4"></textarea></div>
+        </div>
+        <div style="display:flex; gap:10px; margin-top:8px">
+          <button class="btn btn--teal" type="submit">送信する</button>
+          <a class="btn btn--ghost" href="/account/register">会員登録へ</a>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- =====================  Footer  ===================== -->
+  <footer style="padding:40px 0 100px">
+    <div class="container" style="display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap">
+      <div class="brand" aria-label="Fil Bridge">
+        <img src="assets/logo-filbridge.png" alt="Fil Bridge">
+        <strong class="brand__name">Fil Bridge</strong>
+      </div>
+      <small style="color:#6b7280">© 2025 Filbridge Inc.</small>
+    </div>
+  </footer>
+
+  <!-- =====================  Sticky CTA (Mobile)  ===================== -->
+  <div class="sticky-cta" role="region" aria-label="行動ボタン（モバイル）">
+    <a href="#sample" class="btn btn--teal">サンプル請求</a>
+    <a href="#contact" class="btn btn--ghost">相談予約</a>
+  </div>
+</body>
+</html>
