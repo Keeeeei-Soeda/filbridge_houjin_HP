@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>大企業向け高級販促ノベルティ - フィルブリッジ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro', 'Yu Gothic Medium', '游ゴシック Medium', YuGothic, '游ゴシック体', 'Meiryo', sans-serif;
+            line-height: 1.8;
+            color: #2C2C2C;
+            background-color: #FAFAFA;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #F5F5F5 0%, #E8E8E8 100%);
+            position: relative;
+            padding: 100px 0;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="washi" width="40" height="40" patternUnits="userSpaceOnUse"><rect width="40" height="40" fill="none"/><path d="M0,20 Q10,15 20,20 Q30,25 40,20" stroke="%23D0D0D0" stroke-width="0.5" fill="none" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23washi)"/></svg>');
+            opacity: 0.6;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .logo-mark {
+            width: 60px;
+            height: 60px;
+            background: #4A4A4A;
+            margin-right: 15px;
+            position: relative;
+            border-radius: 4px;
+        }
+
+        .logo-mark::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 20px;
+            height: 20px;
+            background: #5BA5A5;
+            border-radius: 50%;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: #4A4A4A;
+            letter-spacing: 0.1em;
+        }
+
+        .header h1 {
+            font-size: 3.2rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            color: #4A4A4A;
+            letter-spacing: 0.05em;
+        }
+
+        .header .subtitle {
+            font-size: 1.5rem;
+            font-weight: 300;
+            color: #5BA5A5;
+            margin-bottom: 20px;
+        }
+
+        .header .description {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Navigation */
+        .nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid #E0E0E0;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #4A4A4A;
+            font-weight: 400;
+            padding: 12px 24px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .nav a:hover {
+            background: #5BA5A5;
+            color: white;
+            border-color: #5BA5A5;
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section:nth-child(even) {
+            background: #FFFFFF;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: #4A4A4A;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: #5BA5A5;
+        }
+
+        .section-subtitle {
+            color: #888;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        /* Problem Solution Section */
+        .problem-solution {
+            background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
+            position: relative;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 60px;
+        }
+
+        .comparison-card {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #F0F0F0;
+            position: relative;
+        }
+
+        .comparison-card.problem {
+            border-top: 4px solid #E74C3C;
+        }
+
+        .comparison-card.solution {
+            border-top: 4px solid #5BA5A5;
+        }
+
+        .comparison-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .comparison-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: #4A4A4A;
+        }
+
+        .comparison-list {
+            list-style: none;
+            space-y: 15px;
+        }
+
+        .comparison-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #F5F5F5;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .comparison-list li:last-child {
+            border-bottom: none;
+        }
+
+        .comparison-list li::before {
+            content: '❌';
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .comparison-card.solution .comparison-list li::before {
+            content: '✅';
+        }
+
+        /* CSR Section */
+        .csr-section {
+            background: linear-gradient(135deg, #4A4A4A 0%, #5A5A5A 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .csr-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="textile" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="20" height="20" fill="none"/><path d="M0,0 L20,20 M20,0 L0,20" stroke="white" stroke-width="0.3" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23textile)"/></svg>');
+        }
+
+        .csr-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .csr-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .csr-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .csr-icon {
+            width: 70px;
+            height: 70px;
+            background: #5BA5A5;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+
+        /* Premium Features */
+        .premium-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .premium-card {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #F0F0F0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .premium-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #5BA5A5, #7BB5B5);
+        }
+
+        .premium-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(91, 165, 165, 0.15);
+        }
+
+        .premium-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #F8F8F8, #EFEFEF);
+            border: 3px solid #5BA5A5;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #5BA5A5;
+        }
+
+        .premium-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: #4A4A4A;
+            font-weight: 400;
+        }
+
+        .premium-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Other Industries Section */
+        .other-industries {
+            background: #FFFFFF;
+        }
+
+        .industry-intro {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: #F8F9FA;
+            border-radius: 8px;
+            border-left: 4px solid #5BA5A5;
+        }
+
+        .industries-compact {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .industry-compact-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #F0F0F0;
+        }
+
+        .industry-compact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(91, 165, 165, 0.15);
+        }
+
+        .industry-compact-header {
+            background: linear-gradient(135deg, #5BA5A5, #7BB5B5);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .industry-compact-header h4 {
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+
+        .industry-compact-content {
+            padding: 20px;
+        }
+
+        .industry-compact-item {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 10px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .industry-compact-item::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #5BA5A5;
+        }
+
+        /* Process Timeline */
+        .process-timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 60px auto;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 70px;
+            bottom: -50px;
+            width: 2px;
+            background: linear-gradient(to bottom, #5BA5A5, #E0E0E0);
+        }
+
+        .timeline-item:last-child::before {
+            display: none;
+        }
+
+        .timeline-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #5BA5A5, #7BB5B5);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-right: 30px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(91, 165, 165, 0.3);
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            flex: 1;
+            border-left: 4px solid #5BA5A5;
+        }
+
+        .timeline-content h3 {
+            color: #4A4A4A;
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+            font-weight: 400;
+        }
+
+        .timeline-content p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Quality Features */
+        .quality-section {
+            background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
+            position: relative;
+        }
+
+        .quality-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .quality-item {
+            text-align: center;
+            padding: 40px 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #F0F0F0;
+        }
+
+        .quality-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .quality-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #F5F5F5, #EFEFEF);
+            border: 3px solid #5BA5A5;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #5BA5A5;
+        }
+
+        .quality-item h3 {
+            color: #4A4A4A;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+
+        .quality-item p {
+            color: #666;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #4A4A4A 0%, #2C2C2C 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="fabric" width="30" height="30" patternUnits="userSpaceOnUse"><rect width="30" height="30" fill="none"/><circle cx="15" cy="15" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23fabric)"/></svg>');
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #5BA5A5, #7BB5B5);
+            color: white;
+            padding: 18px 45px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin: 25px 15px 10px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            letter-spacing: 0.05em;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(91, 165, 165, 0.4);
+            border-color: white;
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border-color: white;
+        }
+
+        .cta-button.secondary:hover {
+            background: white;
+            color: #4A4A4A;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            border: 1px solid #F0F0F0;
+        }
+
+        .faq-question {
+            background: #5BA5A5;
+            color: white;
+            padding: 25px;
+            cursor: pointer;
+            font-weight: 400;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .faq-question:hover {
+            background: #4A9494;
+        }
+
+        .faq-question::after {
+            content: '+';
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active::after {
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 25px;
+            color: #666;
+            line-height: 1.7;
+            display: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .header .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .nav ul {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .comparison-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .premium-grid,
+            .csr-grid,
+            .industries-compact,
+            .quality-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .timeline-item::before {
+                display: none;
+            }
+            
+            .timeline-number {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Japanese Typography Enhancement */
+        .jp-large {
+            font-feature-settings: "palt" 1;
+            letter-spacing: 0.1em;
+        }
+
+        .jp-medium {
+            font-feature-settings: "palt" 1;
+            letter-spacing: 0.05em;
+        }
+
+        /* Subtle Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content fade-in">
+                <div class="logo">
+                    <div class="logo-mark"></div>
+                    <div class="logo-text">Fil Bridge</div>
+                </div>
+                <h1 class="jp-large">大企業向け高級販促ノベルティ</h1>
+                <p class="subtitle jp-medium">ありふれたノベルティから、記憶に残る特別な贈り物へ</p>
+                <p class="description">従来の安価で画一的な販促ノベルティではなく、日本の伝統技術と高品質素材を使用した、受け取る方に喜ばれる特別なノベルティをご提案します。CSR活動の一環として、日本の農家や職人を支援しながら、企業ブランドの価値向上を実現できます。</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <ul>
+                <li><a href="#problem">課題と解決策</a></li>
+                <li><a href="#csr">CSR・社会貢献</a></li>
+                <li><a href="#premium">プレミアム機能</a></li>
+                <li><a href="#other-industries">その他業種</a></li>
+                <li><a href="#process">製作の流れ</a></li>
+                <li><a href="#faq">よくあるご質問</a></li>
+                <li><a href="#contact">お問い合わせ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Problem Solution Section -->
+    <section id="problem" class="section problem-solution">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title jp-medium">従来ノベルティの課題と当社の解決策</h2>
+                <p class="section-subtitle">競合他社との差別化を図り、真に価値のあるノベルティをご提供</p>
+            </div>
+            
+            <div class="comparison-grid">
+                <div class="comparison-card problem">
+                    <div class="comparison-header">
+                        <h3 class="jp-medium">従来の販促ノベルティの課題</h3>
+                        <p style="color: #E74C3C; font-size: 0.9rem;">大量生産・低価格重視の限界</p>
+                    </div>
+                    <ul class="comparison-list">
+                        <li>安価で画一的、どこも似たり寄ったり</li>
+                        <li>壊れやすく、すぐに使われなくなる</li>
+                        <li>もらっても嬉しくない、印象に残らない</li>
+                        <li>ブランド価値の向上につながらない</li>
+                        <li>CSR・社会貢献の要素がない</li>
+                        <li>競合との差別化が困難</li>
+                    </ul>
+                </div>
+
+                <div class="comparison-card solution">
+                    <div class="comparison-header">
+                        <h3 class="jp-medium">フィルブリッジの高級ノベルティ</h3>
+                        <p style="color: #5BA5A5; font-size: 0.9rem;">日本の伝統技術×現代の品質管理</p>
+                    </div>
+                    <ul class="comparison-list">
+                        <li>高品質で特別感のある日本製</li>
+                        <li>長期間愛用される耐久性</li>
+                        <li>受け取る方が本当に喜ぶ上質な贈り物</li>
+                        <li>企業ブランドの価値向上に寄与</li>
+                        <li>日本の農家・職人支援でCSR効果</li>
+                        <li>競合企業にはない独自性</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CSR Section -->
+    <section id="csr" class="section csr-section">
+        <div class="container">
+            <div class="csr-content">
+                <div class="section-header">
+                    <h2 class="section-title jp-medium" style="color: white;">CSR活動との連携で社会貢献</h2>
+                    <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">ノベルティ製作を通じて、持続可能な社会づくりに貢献</p>
+                </div>
+                
+                <div class="csr-grid">
+                    <div class="csr-card">
+                        <div class="csr-icon">🌾</div>
+                        <h3 class="jp-medium" style="color: white; margin-bottom: 20px;">日本の農家支援</h3>
+                        <p style="color: rgba(255,255,255,0.9);">国内農家から直接調達する天然藍や綿花により、地域農業の持続的発展を支援。農家の顔が見える安心のトレーサビリティで、企業の社会貢献をアピールできます。</p>
+                    </div>
+                    
+                    <div class="csr-card">
+                        <div class="csr-icon">👥</div>
+                        <h3 class="jp-medium" style="color: white; margin-bottom: 20px;">伝統工芸士の雇用創出</h3>
+                        <p style="color: rgba(255,255,255,0.9);">西陣織や藍染の伝統技術を継承する職人の雇用を創出。日本の文化遺産を次世代に継承しながら、職人の技術向上と生活安定に貢献しています。</p>
+                    </div>
+                    
+                    <div class="csr-card">
+                        <div class="csr-icon">♻️</div>
+                        <h3 class="jp-medium" style="color: white; margin-bottom: 20px;">環境配慮・サステナビリティ</h3>
+                        <p style="color: rgba(255,255,255,0.9);">天然素材の使用と、長期間使用できる耐久性で廃棄物を削減。環境負荷の少ない製造プロセスで、企業の環境方針に沿ったノベルティを実現します。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Features Section -->
+    <section id="premium" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title jp-medium">プレミアムノベルティの特長</h2>
+                <p class="section-subtitle">競合他社では提供できない、特別な価値をお届け</p>
+            </div>
+            
+            <div class="premium-grid">
+                <div class="premium-card fade-in">
+                    <div class="premium-icon">🏆</div>
+                    <h3 class="jp-medium">高級感と特別感</h3>
+                    <p>西陣織や天然藍染など、日本の伝統技術を活用した上質な仕上がり。受け取る方に「特別な贈り物」として印象に残り、企業イメージの向上に直結します。</p>
+                </div>
+                
+                <div class="premium-card fade-in">
+                    <div class="premium-icon">🎨</div>
+                    <h3 class="jp-medium">完全オリジナル製作</h3>
+                    <p>企業ロゴの箔押し、コーポレートカラーでの特別染色、刺繍での名入れなど、他社にはないオリジナリティを実現。最小60個からの小ロット対応で、特別な企画にも対応可能です。</p>
+                </div>
+                
+                <div class="premium-card fade-in">
+                    <div class="premium-icon">📱</div>
+                    <h3 class="jp-medium">デジタル連携サービス</h3>
+                    <p>名入れプレビューシステムで事前確認、製作工程の可視化、QRコードでの製品ストーリー紹介など、現代のニーズに対応したデジタルサービスを提供します。</p>
+                </div>
+
+                <div class="premium-card fade-in">
+                    <div class="premium-icon">⚡</div>
+                    <h3 class="jp-medium">スピード対応</h3>
+                    <p>専任担当者制により、大企業の厳しいスケジュールにも対応。緊急時のスピード製作や、展示会・イベントに合わせた納期調整も可能です。</p>
+                </div>
+
+                <div class="premium-card fade-in">
+                    <div class="premium-icon">🛡️</div>
+                    <h3 class="jp-medium">品質保証・アフターサポート</h3>
+                    <p>合格率95%以上の厳格な検品基準と、万全のアフターサポート体制。大企業の品質要求にお応えし、安心してご利用いただけます。</p>
+                </div>
+
+                <div class="premium-card fade-in">
+                    <div class="premium-icon">📊</div>
+                    <h3 class="jp-medium">効果測定・レポート</h3>
+                    <p>ノベルティの効果測定レポートをご提供。受け取り者の反応調査や、ブランド認知度への影響分析など、投資効果を可視化できます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Industries Section -->
+    <section id="other-industries" class="section other-industries">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title jp-medium">その他の業種でもご活用いただけます</h2>
+                <p class="section-subtitle">メインターゲットは大企業の販促ノベルティですが、以下の業種でも豊富な実績があります</p>
+            </div>
+
+            <div class="industry-intro">
+                <p class="jp-medium" style="color: #666; font-size: 1rem;">
+                    大企業での高級ノベルティ製作で培った技術とノウハウを活かし、<br>
+                    様々な業種で特別な製品をご提供しています
+                </p>
+            </div>
+            
+            <div class="industries-compact">
+                <div class="industry-compact-card">
+                    <div class="industry-compact-header">
+                        <h4 class="jp-medium">寺院・神社</h4>
+                    </div>
+                    <div class="industry-compact-content">
+                        <div class="industry-compact-item">御朱印帳・ブックカバー（箔押し・刺繍家紋）</div>
+                        <div class="industry-compact-item">お守り袋・数珠袋（つまみ細工・織紋様）</div>
+                        <div class="industry-compact-item">和装小物（絹/西陣×金銀箔・房パーツ）</div>
+                    </div>
+                </div>
+
+                <div class="industry-compact-card">
+                    <div class="industry-compact-header">
+                        <h4 class="jp-medium">ホテル・旅館</h4>
+                    </div>
+                    <div class="industry-compact-content">
+                        <div class="industry-compact-item">客室アメニティ（持ち帰り可能な和装バッグ）</div>
+                        <div class="industry-compact-item">館内ショップ商品（クッションカバー・トート）</div>
+                        <div class="industry-compact-item">オリジナルお土産品（地紋ジャカード・刺繍家紋）</div>
+                    </div>
+                </div>
+
+                <div class="industry-compact-card">
+                    <div class="industry-compact-header">
+                        <h4 class="jp-medium">ブライダル・写真館</h4>
+                    </div>
+                    <div class="industry-compact-content">
+                        <div class="industry-compact-item">前撮り用小物（衣装小物・名入れハンカチ）</div>
+                        <div class="industry-compact-item">挙式記念品（名入れ刺繍・日付箔・エンボス）</div>
+                        <div class="industry-compact-item">両親贈呈用（アルバム布カバー・記念品）</div>
+                    </div>
+                </div>
+
+                <div class="industry-compact-card">
+                    <div class="industry-compact-header">
+                        <h4 class="jp-medium">学校・教育機関</h4>
+                    </div>
+                    <div class="industry-compact-content">
+                        <div class="industry-compact-item">卒業記念品（スクールカラー・学章刺繍）</div>
+                        <div class="industry-compact-item">周年記念品（ペンケース・ブックカバー）</div>
+                        <div class="industry-compact-item">入学祝い（ハンカチ・ストール・文房具）</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="section quality-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title jp-medium">大企業向け製作の流れ</h2>
+                <p class="section-subtitle">専任担当者による一貫したサポートで、安心してお任せいただけます</p>
+            </div>
+            
+            <div class="process-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-number">1</div>
+                    <div class="timeline-content">
+                        <h3 class="jp-medium">ご相談・企画提案</h3>
+                        <p>大企業専任の担当者が、ご要望を詳しくヒアリング。ノベルティの目的、ターゲット、予算、納期、CSR要素など、包括的な企画をご提案いたします。競合分析や効果予測も含めた戦略的なご提案を行います。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-number">2</div>
+                    <div class="timeline-content">
+                        <h3 class="jp-medium">サンプル製作・承認</h3>
+                        <p>実際の素材サンプルと試作品をお送りし、品質をご確認いただきます。名入れプレビューシステムで仕上がりイメージをリアルタイム確認。必要に応じて複数パターンをご提案し、最適なものをお選びいただけます。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-number">3</div>
+                    <div class="timeline-content">
+                        <h3 class="jp-medium">契約・スケジュール調整</h3>
+                        <p>大企業の調達プロセスに対応した契約書類の整備と、詳細なスケジュール管理。展示会やイベントに合わせた逆算スケジュールで、確実な納期をお約束します。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-number">4</div>
+                    <div class="timeline-content">
+                        <h3 class="jp-medium">製造・品質管理</h3>
+                        <p>伝統技術による丁寧な手仕事と、大企業基準の厳格な品質管理を両立。製造工程の可視化により、進捗状況をリアルタイムでご確認いただけます。合格率95%以上の検品体制で安心です。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-number">5</div>
+                    <div class="timeline-content">
+                        <h3 class="jp-medium">納品・効果測定</h3>
+                        <p>指定納期での確実な納品と、特別包装・個別配送にも対応。納品後は効果測定レポートをご提供し、次回企画への改善提案も行います。継続的なパートナーシップを築きます。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title jp-medium">よくあるご質問</h2>
+                <p class="section-subtitle">大企業の担当者様からよく寄せられるご質問にお答えします</p>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question jp-medium">従来の低価格ノベルティと比べて、投資効果はどうですか？</div>
+                <div class="faq-answer">高品質なノベルティは受け取る方の満足度が高く、長期間使用されるため、ブランド露出効果が格段に向上します。また、CSR活動との連携により企業イメージの向上効果も期待でき、中長期的には非常に高い投資効果を実現できます。効果測定レポートによる定量的な評価も可能です。</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question jp-medium">大量発注の場合の価格体系と最小ロット数について</div>
+                <div class="faq-answer">最小60個から承っており、数量に応じたボリュームディスカウントをご提供します。年間契約や複数回発注による特別価格設定も可能です。大企業様向けの専用価格表をご用意しておりますので、詳細はお問い合わせください。</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question jp-medium">CSR活動としての効果はどのように証明できますか？</div>
+                <div class="faq-answer">農家との直接契約書、職人雇用証明、CO2削減効果レポートなど、CSR活動の根拠となる資料を一式ご提供します。企業のサステナビリティレポートやCSRレポートにご活用いただける詳細な資料をご用意しています。</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question jp-medium">緊急時の対応や、短期間での製作は可能ですか？</div>
+                <div class="faq-answer">大企業専任チームによる緊急時対応体制を整備しています。通常2-4週間の納期を、場合によっては1-2週間まで短縮可能です。ただし、品質を確保するため、緊急時でも最低限の製作期間は必要となります。まずはご相談ください。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question jp-medium">製作過程の透明性や、品質保証について教えてください</div>
+                <div class="faq-answer">製造工程の完全可視化システムにより、リアルタイムで進捗確認が可能です。また、合格率95%以上の厳格な検品基準と、万が一の場合の品質保証制度も完備。大企業の厳しい品質要求にも確実にお応えします。</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="cta-section section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="jp-large" style="font-size: 2.5rem; margin-bottom: 20px; font-weight: 300;">大企業向け専用窓口</h2>
+                <p class="jp-medium" style="font-size: 1.2rem; margin-bottom: 40px; opacity: 0.9;">
+                    専任担当者がお客様の企業に最適なプレミアムノベルティをご提案いたします。<br>
+                    まずはお気軽にご相談ください。お見積もり・企画提案は無料です。
+                </p>
+                
+                <a href="#" class="cta-button">専用お問い合わせフォーム</a>
+                <a href="#" class="cta-button secondary">サンプル・資料請求</a>
+                
+                <div style="margin-top: 50px; font-size: 0.95rem; opacity: 0.8; line-height: 1.8;">
+                    <p>📞 大企業専用ダイヤル: 0120-XXX-XXX（平日9:00-18:00）</p>
+                    <p>📧 大企業専用メール: enterprise@filbridge.co.jp</p>
+                    <p>⏱️ 通常24時間以内にご回答いたします</p>
+                    <p>💼 大企業向け専用カタログもご用意しております</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isOpen = answer.style.display === 'block';
+                
+                // Close all other answers and remove active class
+                document.querySelectorAll('.faq-answer').forEach(ans => {
+                    ans.style.display = 'none';
+                });
+                document.querySelectorAll('.faq-question').forEach(q => {
+                    q.classList.remove('active');
+                });
+                
+                // Toggle current answer
+                if (!isOpen) {
+                    answer.style.display = 'block';
+                    question.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.05)';
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and other elements
+        document.querySelectorAll('.premium-card, .industry-compact-card, .quality-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
