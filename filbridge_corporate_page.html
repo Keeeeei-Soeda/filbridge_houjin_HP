@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>法人のお客様へ - フィルブリッジ</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro', 'Yu Gothic Medium', '游ゴシック Medium', YuGothic, '游ゴシック体', 'Meiryo', sans-serif;
+            line-height: 1.8;
+            color: #2C2C2C;
+            background-color: #FAFAFA;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #F5F5F5 0%, #E8E8E8 100%);
+            position: relative;
+            padding: 100px 0;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="washi" width="40" height="40" patternUnits="userSpaceOnUse"><rect width="40" height="40" fill="none"/><path d="M0,20 Q10,15 20,20 Q30,25 40,20" stroke="%23D0D0D0" stroke-width="0.5" fill="none" opacity="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23washi)"/></svg>');
+            opacity: 0.6;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+
+        .logo-mark {
+            width: 60px;
+            height: 60px;
+            background: #4A4A4A;
+            margin-right: 15px;
+            position: relative;
+            border-radius: 4px;
+        }
+
+        .logo-mark::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 20px;
+            height: 20px;
+            background: #5BA5A5;
+            border-radius: 50%;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: #4A4A4A;
+            letter-spacing: 0.1em;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+            color: #4A4A4A;
+            letter-spacing: 0.05em;
+        }
+
+        .header .subtitle {
+            font-size: 1.4rem;
+            font-weight: 300;
+            color: #5BA5A5;
+            margin-bottom: 15px;
+        }
+
+        .header .description {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* Navigation */
+        .nav {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid #E0E0E0;
+        }
+
+        .nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #4A4A4A;
+            font-weight: 400;
+            padding: 12px 24px;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .nav a:hover {
+            background: #5BA5A5;
+            color: white;
+            border-color: #5BA5A5;
+            transform: translateY(-2px);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section:nth-child(even) {
+            background: #FFFFFF;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            color: #4A4A4A;
+            font-weight: 300;
+            letter-spacing: 0.05em;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: #5BA5A5;
+        }
+
+        .section-subtitle {
+            color: #888;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #F0F0F0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #5BA5A5, #7BB5B5);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 30px rgba(91, 165, 165, 0.15);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #F8F8F8, #EFEFEF);
+            border: 2px solid #5BA5A5;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #5BA5A5;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+            color: #4A4A4A;
+            font-weight: 400;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* TSUMUGI Brand Section */
+        .tsumugi-section {
+            background: linear-gradient(135deg, #4A4A4A 0%, #5A5A5A 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tsumugi-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="textile" width="20" height="20" patternUnits="userSpaceOnUse"><rect width="20" height="20" fill="none"/><path d="M0,0 L20,20 M20,0 L0,20" stroke="white" stroke-width="0.3" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23textile)"/></svg>');
+        }
+
+        .tsumugi-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+        }
+
+        .tsumugi-logo {
+            font-size: 3rem;
+            font-weight: 100;
+            letter-spacing: 0.3em;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .tsumugi-description {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        /* Industry Examples */
+        .industry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .industry-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #F0F0F0;
+        }
+
+        .industry-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(91, 165, 165, 0.15);
+        }
+
+        .industry-header {
+            background: linear-gradient(135deg, #5BA5A5, #7BB5B5);
+            color: white;
+            padding: 25px;
+            text-align: center;
+            position: relative;
+        }
+
+        .industry-header::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid #5BA5A5;
+        }
+
+        .industry-header h3 {
+            font-size: 1.2rem;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+        }
+
+        .industry-content {
+            padding: 30px 25px 25px;
+        }
+
+        .industry-item {
+            margin-bottom: 18px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid #F5F5F5;
+        }
+
+        .industry-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .industry-item strong {
+            color: #5BA5A5;
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .industry-item span {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        /* Process Timeline */
+        .process-timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 60px auto;
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 70px;
+            bottom: -50px;
+            width: 2px;
+            background: linear-gradient(to bottom, #5BA5A5, #E0E0E0);
+        }
+
+        .timeline-item:last-child::before {
+            display: none;
+        }
+
+        .timeline-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #5BA5A5, #7BB5B5);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-right: 30px;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(91, 165, 165, 0.3);
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            flex: 1;
+            border-left: 4px solid #5BA5A5;
+        }
+
+        .timeline-content h3 {
+            color: #4A4A4A;
+            margin-bottom: 12px;
+            font-size: 1.3rem;
+            font-weight: 400;
+        }
+
+        .timeline-content p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Quality Features */
+        .quality-section {
+            background: linear-gradient(135deg, #F8F9FA 0%, #E9ECEF 100%);
+            position: relative;
+        }
+
+        .quality-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .quality-item {
+            text-align: center;
+            padding: 40px 30px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #F0F0F0;
+        }
+
+        .quality-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .quality-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #F5F5F5, #EFEFEF);
+            border: 3px solid #5BA5A5;
+            border-radius: 50%;
+            margin: 0 auto 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #5BA5A5;
+        }
+
+        .quality-item h3 {
+            color: #4A4A4A;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+
+        .quality-item p {
+            color: #666;
+            line-height: 1.7;
+            font-size: 0.95rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #4A4A4A 0%, #2C2C2C 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="fabric" width="30" height="30" patternUnits="userSpaceOnUse"><rect width="30" height="30" fill="none"/><circle cx="15" cy="15" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23fabric)"/></svg>');
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #5BA5A5, #7BB5B5);
+            color: white;
+            padding: 18px 45px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin: 25px 15px 10px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            letter-spacing: 0.05em;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(91, 165, 165, 0.4);
+            border-color: white;
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border-color: white;
+        }
+
+        .cta-button.secondary:hover {
+            background: white;
+            color: #4A4A4A;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            border: 1px solid #F0F0F0;
+        }
+
+        .faq-question {
+            background: #5BA5A5;
+            color: white;
+            padding: 25px;
+            cursor: pointer;
+            font-weight: 400;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .faq-question:hover {
+            background: #4A9494;
+        }
+
+        .faq-question::after {
+            content: '+';
+            position: absolute;
+            right: 25px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active::after {
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        .faq-answer {
+            padding: 25px;
+            color: #666;
+            line-height: 1.7;
+            display: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .header .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .nav ul {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .services-grid,
+            .industry-grid,
+            .quality-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .timeline-item::before {
+                display: none;
+            }
+            
+            .timeline-number {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+        }
+
+        /* Japanese Typography Enhancement */
+        .jp-large {
+            font-feature-settings: "palt" 1;
+            letter-spacing: 0.1em;
+        }
+
+        .jp-medium {
+            font-feature-settings: "palt" 1;
+            letter-spacing: 0.05em;
+        }
+
+        /* Subtle Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content fade-in">
+                <div class="logo">
+                    <div class="logo-mark"></div>
+                    <div class="logo-text">Fil Bridge</div>
+                </div>
+                <h1 class="jp-large">法人のお客様へ</h1>
+                <p class="subtitle jp-medium">布からはじまるものづくりを、あなたの事業にも。</p>
+                <p class="description">フィルブリッジでは、小売店様やバイヤーの方に向けた商品仕入れやOEM対応を行っております。ご登録いただくと、仕入れ価格にて商品をご購入いただけるほか、オリジナル商品の製作にも対応。あなたのブランドや店舗の世界観に合ったものづくりを、私たちがお手伝いします。</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="container">
+            <ul>
+                <li><a href="#services">サービス案内</a></li>
+                <li><a href="#industries">業種別活用例</a></li>
+                <li><a href="#process">製作の流れ</a></li>
+                <li><a href="#quality">品質へのこだわり</a></li>
+                <li><a href="#faq">よくあるご質問</a></li>
+                <li><a href="#contact">お問い合わせ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- TSUMUGI Brand Section -->
+    <section class="tsumugi-section section">
+        <div class="container">
+            <div class="tsumugi-content">
+                <div class="tsumugi-logo jp-large">TSUMUGI</div>
+                <p class="tsumugi-description jp-medium">
+                    伝統的な西陣織と天然藍染の技術を現代に活かし、高品質で持続可能なものづくりを追求しています。
+                    一つひとつ丁寧に手がけた製品は、使う人の心に寄り添い、長く愛用していただける品質を目指しています。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title jp-medium">サービス案内</h2>
+                <p class="section-subtitle">日本の伝統技術と現代のニーズを融合させた、三つの主要サービス</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">🏭</div>
+                    <h3 class="jp-medium">OEM製造サービス</h3>
+                    <p>最小60個から対応可能な小ロット製造。西陣織や藍染を使ったオリジナル商品の企画・製造を承ります。名入れ、刺繍、箔押しなど、多彩な加工オプションで、お客様だけの特別な製品をお作りします。</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">📦</div>
+                    <h3 class="jp-medium">サンプル・仕入れ販売</h3>
+                    <p>商品の質感や色味を実際に確認いただけるサンプルをご提供。法人様専用の特別仕入れ価格で、継続的な商品調達をサポートいたします。小売店様の店頭販売にも最適です。</p>
+                </div>
+                
+                <div class="service-card fade-in">
+                    <div class="service-icon">🎁</div>
+                    <h3 class="jp-medium">ノベルティ・記念品</h3>
+                    <p>企業イベントや展示会、周年記念品として最適な高品質アイテム。日本の伝統素材を使用した上質感で、お客様や取引先の皆様に特別な印象を残すことができます。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Industries Section -->
+    <section id="industries" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title jp-medium">業種別活用例</h2>
+                <p class="section-subtitle">様々な業界で、フィルブリッジの製品をご活用いただいています</p>
+            </div>
+            
+            <div class="industry-grid">
+                <div class="industry-card">
+                    <div class="industry-header">
+                        <h3 class="jp-medium">寺院・神社</h3>
+                    </div>
+                    <div class="industry-content">
+                        <div class="industry-item">
+                            <strong>御朱印帳・ブックカバー</strong>
+                            <span>参拝導線と相性の良い、箔押し・エンボス・ジャカード柄・刺繍家紋に対応</span>
+                        </div>
+                        <div class="industry-item">
+                            <strong>お守り袋・数珠袋</strong>
+                            <span>つまみ細工・織紋様・名入れタグで特別感を演出</span>
+                        </div>
+                        <div class="industry-item">
+                            <strong>和装小物</strong>
+                            <span>絹/西陣×金銀箔・房パーツで授与所・行事物販に最適</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="industry-card">
+                    <div class="industry-header">
+                        <h3 class="jp-medium">ホテル・旅館</h3>
+                    </div>
+                    <div class="industry-content">
+                        <div class="industry-item">
+                            <strong>客室アメニティ</strong>
+                            <span>持ち帰り可能な和装バッグ・巾着で特別な体験を</span>
+                        </div>
+                        <div class="industry-item">
+                            <strong>館内ショップ商品</strong>
+                            <span>クッションカバー・和装/洋装トート・巾着</span>
+                        </div>
+                        <div class="industry-item">
+                            <strong>お土産品</strong>
+                            <span>地紋ジャカード・藍の濃淡・刺繍家紋でオリジナル性を</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="industry-card">
+                    <div class="industry-header">
+                        <h3 class="jp-medium">企業ノベルティ</h3>
+                    </div>
+                    <div class="industry-content">
+                        <div class="industry-item">
+                            <strong>名刺・カードケース</strong>
+                            <span>箔押しロゴ・幾何学ジャカード・クッション材で高級感を</span>
+                        </div>
+                        <div class="industry-item">
+                            <strong>採用・入社記念品</strong>
+                            <span>展示会・周年記念に相応しい品質と デザイン</span>
+                        </div>
+                        <div class="industry-item">
+                            <strong>学校・大学向け</strong>
+                            <span>スクールカラー・学章刺繍・2配色織で特別感を演出</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="industry-card">
+                    <div class="industry-header">
+                        <h3 class="jp-medium">ブライダル・写真館</h3>
+                    </div>
+                    <div class="industry-content">
+                        <div class="industry-item">
+                            <strong>前撮り用小物</strong>
+                            <span>衣装小物・ハンカチ（名入れ）で特別な瞬間を彩る</span>
+                        </div>
+                        <div class="industry-item">
+                            <strong>挙式記念品</strong>
+                            <span>名入れ刺繍・日付箔・エンボスで永遠の思い出に</span>
+                        </div>
+                        <div class="industry-item">
+                            <strong>両親贈呈用</strong>
+                            <span>アルバム布カバー・前撮り小物で感謝の気持ちを込めて</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section id="process" class="section quality-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title jp-medium">製作の流れ</h2>
+                <p class="section-subtitle">お問い合わせから納品まで、一貫したサポート体制でお応えします</p>
+            </div>
+            
+            <div class="process-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-number">1</div>
+                    <div class="timeline-content">
+                        <h3 class="jp-medium">ご相談・ヒアリング</h3>
+                        <p>専任担当者がお客様のご要望を詳しくお伺いします。用途、数量、予算、納期、デザインイメージなど、どのようなことでもお聞かせください。豊富な経験に基づいた最適なご提案をいたします。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-number">2</div>
+                    <div class="timeline-content">
+                        <h3 class="jp-medium">企画提案・サンプル提供</h3>
+                        <p>ご要望に基づいた詳細な企画書を作成いたします。実際の素材サンプルをお送りし、質感や色味をご確認いただけます。複数の素材から最適なものをお選びいただけます。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-number">3</div>
+                    <div class="timeline-content">
+                        <h3 class="jp-medium">試作・デザイン確認</h3>
+                        <p>名入れプレビューシステムで仕上がりイメージをリアルタイムで確認。フォント3種からお選びいただき、即座にレンダリングします。ご納得いただけるまで調整を重ねます。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-number">4</div>
+                    <div class="timeline-content">
+                        <h3 class="jp-medium">製造・品質管理</h3>
+                        <p>設計→紋紙/データ作成→整経→綜絖→織りの伝統工程で製造。熟練職人による手仕事と現代の品質管理技術を融合し、一つひとつ丁寧に仕上げます。厳格な検品基準で品質を保証。</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-number">5</div>
+                    <div class="timeline-content">
+                        <h3 class="jp-medium">納品・アフターサポート</h3>
+                        <p>ギフト梱包・特別包装も承ります。納品後もケア方法の指導、色落ち対応、追加発注など、継続的にサポート。長くご愛用いただけるよう、万全のアフターフォロー体制を整えています。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quality Section -->
+    <section id="quality" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title jp-medium">品質へのこだわり</h2>
+                <p class="section-subtitle">日本の伝統技術と現代の品質管理技術の融合</p>
+            </div>
+            
+            <div class="quality-grid">
+                <div class="quality-item">
+                    <div class="quality-icon">🇯🇵</div>
+                    <h3 class="jp-medium">国産原料へのこだわり</h3>
+                    <p>国内産地から直接調達した最高品質の原料のみを使用。生産者の顔が見える安心のトレーサビリティを完備し、持続可能なものづくりを実践しています。</p>
+                </div>
+                
+                <div class="quality-item">
+                    <div class="quality-icon">✋</div>
+                    <h3 class="jp-medium">職人の技と伝統</h3>
+                    <p>西陣織の「先染め×設計」技術により、他では得られない柄の立体感と長寿命を実現。代々受け継がれた熟練職人の手仕事により、一つひとつに込められた品質をお届けします。</p>
+                </div>
+                
+                <div class="quality-item">
+                    <div class="quality-icon">🔍</div>
+                    <h3 class="jp-medium">厳格な検品体制</h3>
+                    <p>糸番手・密度・検品基準をすべて公開。合格率95%以上の厳しい品質管理により、お客様に安定した製品をお届け。万が一の場合も迅速に対応いたします。</p>
+                </div>
+                
+                <div class="quality-item">
+                    <div class="quality-icon">🌿</div>
+                    <h3 class="jp-medium">天然素材の魅力</h3>
+                    <p>肌触りの良い天然繊維を中心に使用。藍染は天然藍を使用し、深い色味と美しい経年変化をお楽しみいただけます。自然由来の素材が持つ温かみを大切にしています。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section quality-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title jp-medium">よくあるご質問</h2>
+                <p class="section-subtitle">お客様からよく寄せられるご質問にお答えします</p>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question jp-medium">最小ロット数と料金体系について教えてください</div>
+                <div class="faq-answer">OEM製造は60個から承っております。小ロット対応が可能な理由は、柔軟な生産体制と長年培った職人ネットワークを活かした効率的な製造プロセスにあります。詳細な料金表は、お問い合わせ後に個別にご提示いたします。</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question jp-medium">色移りやお手入れ方法について</div>
+                <div class="faq-answer">藍染製品は最初の数回は単独洗いをお勧めしています。詳しいケア方法は製品と一緒にケアガイドカードをお付けし、職人の"ひと言"カードも同梱しています。購入後のアフターフォローも充実しており、お困りの際はいつでもご相談ください。</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question jp-medium">納期はどのくらいかかりますか？</div>
+                <div class="faq-answer">通常納期は2-4週間です。繁忙期（年末年始、春の卒業シーズン）や特殊加工の場合は別途ご相談となります。緊急対応も可能な場合がございますので、まずはお気軽にご相談ください。納期カレンダーも事前にお知らせいたします。</div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question jp-medium">サンプルの提供条件について</div>
+                <div class="faq-answer">法人様には無料でサンプルをご提供しております。実際の質感や色味をご確認いただけるよう、複数の素材バリエーションをお送りいたします。サンプル請求から発送まで3-5営業日程度でお届けします。</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question jp-medium">名入れ・オリジナル加工の対応範囲は？</div>
+                <div class="faq-answer">刺繍、箔押し、エンボス、ジャカード柄、つまみ細工など多彩な加工に対応しています。名入れプレビュー機能により、ご注文前に仕上がりイメージをリアルタイムで確認いただけます。特殊な加工についてもお気軽にご相談ください。</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="contact" class="cta-section section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="jp-large" style="font-size: 2.5rem; margin-bottom: 20px; font-weight: 300;">お問い合わせ・ご相談</h2>
+                <p class="jp-medium" style="font-size: 1.2rem; margin-bottom: 40px; opacity: 0.9;">
+                    専任担当者が丁寧にサポートいたします。<br>
+                    まずはお気軽にご相談ください。お見積もりは無料です。
+                </p>
+                
+                <a href="#" class="cta-button">お問い合わせフォーム</a>
+                <a href="#" class="cta-button secondary">サンプル請求</a>
+                
+                <div style="margin-top: 50px; font-size: 0.95rem; opacity: 0.8; line-height: 1.8;">
+                    <p>📞 お電話でのお問い合わせ: 0120-XXX-XXX（平日9:00-18:00）</p>
+                    <p>📧 メールでのお問い合わせ: corporate@filbridge.co.jp</p>
+                    <p>🏢 法人専用ページでの会員登録も承っております</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // FAQ toggle functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const isOpen = answer.style.display === 'block';
+                
+                // Close all other answers and remove active class
+                document.querySelectorAll('.faq-answer').forEach(ans => {
+                    ans.style.display = 'none';
+                });
+                document.querySelectorAll('.faq-question').forEach(q => {
+                    q.classList.remove('active');
+                });
+                
+                // Toggle current answer
+                if (!isOpen) {
+                    answer.style.display = 'block';
+                    question.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.05)';
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.6s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all service cards and other elements
+        document.querySelectorAll('.service-card, .industry-card, .quality-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
