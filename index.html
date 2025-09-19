@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Fil Bridge | 法人向けページ インデックス</title>
+  <style>
+    :root{
+      --teal:#00A2A8;      /* Fil Bridge ティール */
+      --ink:#43403F;       /* ダークグレー */
+      --bg:#EEF2F5;        /* 薄いグレーブルー */
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0; font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Noto Sans JP","Segoe UI",Roboto,"Helvetica Neue",Arial,"メイリオ",sans-serif;
+      color:var(--ink); background:radial-gradient(1200px 600px at 10% -10%, #F7F9FB, transparent), var(--bg);
+      -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+    }
+    .wrap{max-width:720px; margin:6vh auto; padding:0 20px; text-align:center}
+    h1{font-size:28px; margin:0 0 8px}
+    p{color:#6b7280; margin:0 0 28px}
+    .links{display:grid; gap:14px}
+    .btn{
+      display:block; padding:14px 18px; border-radius:12px; font-weight:600; text-decoration:none; 
+      background:#fff; color:var(--ink); border:1px solid #e5e7eb; transition:.2s ease; 
+      box-shadow:0 6px 18px rgba(0,0,0,.04);
+    }
+    .btn:hover{border-color:var(--teal); color:var(--teal)}
+    .btn.-primary{background:var(--teal); color:#fff; border-color:transparent}
+    .btn.-primary:hover{filter:brightness(.97)}
+    footer{margin-top:32px; font-size:12px; color:#9aa3ac}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <h1>Fil Bridge｜法人向けページ Index</h1>
+    <p>下のボタンから各HTMLへ移動できます。</p>
+
+    <div class="links" role="navigation" aria-label="ページリンク">
+      <!-- 同名ファイルが2回指定されていたため、A/Bとして掲載しています -->
+      <a class="btn -primary" href="./filbridge_corporate_page01.html" aria-label="ベースの企業ページ">
+        filbridge_corporate-large_page.html（A）
+      </a>
+      <a class="btn" href="./filbridge_corporate-large_page.html" aria-label="大企業に寄せたページ">
+        filbridge_corporate-large_page.html（B）
+      </a>
+      <a class="btn" href="./filbridge_corporate_page02.html" aria-label="企業ページ ver02">
+        filbridge_corporate_page02.html
+      </a>
+    </div>
+
+    <footer>© Fil Bridge</footer>
+  </main>
+</body>
+</html>
