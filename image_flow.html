@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Cover Flow</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .carousel-container {
+            width: 100%;
+            max-width: 1200px;
+            perspective: 1000px;
+            position: relative;
+        }
+
+        .carousel {
+            position: relative;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-item {
+            position: absolute;
+            width: 280px;
+            height: 350px;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .carousel-item.active {
+            z-index: 10;
+            transform: translateX(0) scale(1.1);
+            filter: brightness(1);
+        }
+
+        .carousel-item.left-2 {
+            z-index: 1;
+            transform: translateX(-480px) scale(0.75) rotateY(50deg);
+            filter: brightness(0.4);
+        }
+
+        .carousel-item.left-1 {
+            z-index: 5;
+            transform: translateX(-320px) scale(0.85) rotateY(40deg);
+            filter: brightness(0.6);
+        }
+
+        .carousel-item.right-1 {
+            z-index: 5;
+            transform: translateX(320px) scale(0.85) rotateY(-40deg);
+            filter: brightness(0.6);
+        }
+
+        .carousel-item.right-2 {
+            z-index: 1;
+            transform: translateX(480px) scale(0.75) rotateY(-50deg);
+            filter: brightness(0.4);
+        }
+
+        .carousel-item.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .controls {
+            position: absolute;
+            bottom: -80px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 100;
+        }
+
+        .btn {
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.5);
+            transform: scale(1.05);
+        }
+
+        .item-title {
+            position: absolute;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 24px;
+            font-weight: 300;
+            opacity: 0;
+            transition: opacity 0.3s;
+            white-space: nowrap;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .carousel-item.active .item-title {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel-container">
+        <div class="carousel" id="carousel">
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400&h=500&fit=crop" alt="生地1">
+                <div class="item-title">生地1</div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400&h=500&fit=crop" alt="生地2">
+                <div class="item-title">生地2</div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=400&h=500&fit=crop" alt="生地3">
+                <div class="item-title">生地3</div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400&h=500&fit=crop" alt="生地4">
+                <div class="item-title">生地4</div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1487180144351-b8472da7d491?w=400&h=500&fit=crop" alt="生地5">
+                <div class="item-title">生地5</div>
+            </div>
+            <div class="carousel-item">
+                <img src="https://images.unsplash.com/photo-1459749411175-04bf5292ceea?w=400&h=500&fit=crop" alt="生地6">
+                <div class="item-title">生地6</div>
+            </div>
+        </div>
+        <div class="controls">
+            <button class="btn" onclick="previousSlide()">← 前へ</button>
+            <button class="btn" onclick="nextSlide()">次へ →</button>
+        </div>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const items = document.querySelectorAll('.carousel-item');
+        const totalItems = items.length;
+
+        function updateCarousel() {
+            items.forEach((item, index) => {
+                item.className = 'carousel-item';
+                
+                const position = index - currentIndex;
+                
+                if (position === 0) {
+                    item.classList.add('active');
+                } else if (position === -1 || position === totalItems - 1) {
+                    item.classList.add('left-1');
+                } else if (position === -2 || position === totalItems - 2) {
+                    item.classList.add('left-2');
+                } else if (position === 1 || position === -(totalItems - 1)) {
+                    item.classList.add('right-1');
+                } else if (position === 2 || position === -(totalItems - 2)) {
+                    item.classList.add('right-2');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % totalItems;
+            updateCarousel();
+        }
+
+        function previousSlide() {
+            currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+            updateCarousel();
+        }
+
+        // クリックで選択
+        items.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                currentIndex = index;
+                updateCarousel();
+            });
+        });
+
+        // キーボード操作
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') previousSlide();
+            if (e.key === 'ArrowRight') nextSlide();
+        });
+
+        // 初期化
+        updateCarousel();
+    </script>
+</body>
+</html>
